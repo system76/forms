@@ -1,17 +1,13 @@
 <div align="center">
-  <h1>@system76/design</h1>
-  <h3>System76 styles and design related web assets</h3>
+  <h1>@system76/forms</h1>
+  <h3>System76 Vue components for forms</h3>
   <br>
   <br>
 </div>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@system76/design/">
-    <img src="https://img.shields.io/npm/v/@system76/design.svg" alt="npm">
-  </a>
-
-  <a href="https://travis-ci.org/system76/design">
-    <img src="https://travis-ci.org/system76/design.svg" alt="travis-ci">
+  <a href="https://www.npmjs.com/package/@system76/forms/">
+    <img src="https://img.shields.io/npm/v/@system76/forms.svg" alt="npm">
   </a>
 
   <a href="https://renovatebot.com/">
@@ -22,21 +18,20 @@
     <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="standard">
   </a>
 
-  <a href="https://design.origin76.com/">
+  <a href="https://forms.origin76.com/">
     <img src="https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg" alt="Storybook">
   </a>
 </p>
 
 ---
 
-This repository contains all colors, style variables, typography and
-documentation related to how System76 styles it's web projects. It serves as the
-single source of truth that all other web projects should use.
+This repository contains all the System76 form Vue components including buttons,
+inputs, and labels. It also holds client side validation logic.
 
 ## Using
 
 ```
-npm install --save-dev @system76/design
+npm install --save-dev @system76/forms
 ```
 
 ### Tips
@@ -66,4 +61,7 @@ build: {
 
 ## Deployment
 
-Simply push to master and travis will do all the work for you!
+To [trigger a release](https://semantic-release.gitbook.io/semantic-release/#triggering-a-release),
+push a commit to the `master` branch in the
+[Angular Commit Message Conventions](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
+format.
