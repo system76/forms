@@ -1,6 +1,7 @@
 /**
- * entry.js
- * Exports everything related to System76 form components
+ * src/index.js
+ * Exports everything related to System76 form components. Used for webpack /
+ * bundler entry points.
  */
 
 import * as components from './components'

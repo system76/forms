@@ -1,6 +1,7 @@
 /**
- * entry.js
- * Exports everything related to System76 forms for browser script entry
+ * src/entry.js
+ * Global document entry point for @system76/forms. This file is used for a
+ * browser entry point.
  */
 
 import * as plugin from './index'
