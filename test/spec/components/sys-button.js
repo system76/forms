@@ -3,8 +3,8 @@
  * Tests sys-button component
  */
 
-import test from 'ava'
 import { mount } from '@vue/test-utils'
+import test from 'ava'
 
 import SysButton from '../../../src/components/sys-button.vue'
 

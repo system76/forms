@@ -52,7 +52,7 @@ export default {
     color: {
       type: String,
       default: 'normal',
-      validator: (v) => ['normal', 'destructive', 'suggested'].includes(v)
+      validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
     },
 
     disabled: {
@@ -100,7 +100,7 @@ export default {
 
     classes () {
       return styleClasses(this.$style, {
-        'button': true,
+        button: true,
         'button--active': this.active,
         'button--block': this.block,
         'button--disabled': this.disabled,
@@ -167,12 +167,13 @@ export default {
     font-family: var(--font-family-slab);
     font-style: normal;
     font-weight: 400;
-    letter-spacing: 0.05em;
+    letter-spacing: 1px;
     line-height: 1;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
-    transition: all 150ms ease;
+    transition-duration: 100ms;
+    transition-property: background-color, border-color, box-shadow;
+    transition-timing-function: ease;
     user-select: none;
   }
 
@@ -180,38 +181,80 @@ export default {
    * Styles
    */
 
-   .button--normal {
-     border-color: var(--base-font-color);
-     color: var(--base-font-color);
-   }
+  .button--normal {
+    background-color: var(--color-light-normal);
+    border-color: var(--color-light-normal);
+    color: var(--color-light-normal-contrast);
+  }
 
-   .button--normal:hover {
-     box-shadow: 0 0 4px color-mod(var(--action-color) a(0.4));
-   }
+  .button--normal:hover,
+  .button--normal:focus-within {
+    box-shadow: 1px 1px 3px color-mod(var(--color-light-normal) blend(#000 10%));
+  }
 
-   .button--normal:focus {
-     box-shadow:
-       0 0 12px color-mod(var(--action-color) lightness(-5%) a(-0.3)),
-       0 0 1px color-mod(var(--action-color) lightness(-5%) a(-0.3));
-   }
+  .button--normal.button--active,
+  .button--normal:active {
+    background-color: color-mod(var(--color-light-normal) blend(#fff 40%));
+    border-color: color-mod(var(--color-light-normal) blend(#fff 40%));
+    box-shadow: 1px 1px 3px color-mod(var(--color-light-normal) blend(#000 10%));
+  }
 
-   .button--normal.button--active,
-   .button--normal:active {
-     background-color: var(--action-color);
-     color: var(--white);
-   }
+  .button--normal.button--disabled,
+  .button--normal:disabled {
+    background-color: var(--color-light-normal);
+    border-color: var(--color-light-normal);
+    color: color-mod(var(--color-light-normal-contrast) blend(var(--color-light-normal) 60%));
+  }
 
-   .button--normal.button--disabled,
-   .button--normal:disabled {
-     border-color: var(--base-font-color) !important;
-     color: var(--base-font-color) !important;
-   }
+  .button--primary {
+    background-color: var(--color-light-primary);
+    border-color: var(--color-light-primary);
+    color: var(--color-light-primary-contrast);
+  }
 
-   .button--suggested {
-     background-color: var(--suggested-color);
-     border-color: color-mod(var(--suggested-color) shade(38%));
-     color: var(--white);
-   }
+  .button--primary:hover,
+  .button--primary:focus-within {
+    box-shadow: 1px 1px 3px color-mod(var(--color-light-primary) blend(#000 30%));
+  }
+
+  .button--primary.button--active,
+  .button--primary:active {
+    background-color: color-mod(var(--color-light-primary) blend(#fff 40%));
+    border-color: color-mod(var(--color-light-primary) blend(#fff 40%));
+    box-shadow: 1px 1px 3px color-mod(var(--color-light-primary) blend(#000 30%));
+  }
+
+  .button--primary.button--disabled,
+  .button--primary:disabled {
+    background-color: var(--color-light-primary);
+    border-color: var(--color-light-primary);
+    color: color-mod(var(--color-light-primary-contrast) blend(var(--color-light-primary) 70%));
+  }
+
+  .button--secondary {
+    background-color: var(--color-light-secondary);
+    border-color: var(--color-light-secondary);
+    color: var(--color-light-secondary-contrast);
+  }
+
+  .button--secondary:hover,
+  .button--secondary:focus-within {
+    box-shadow: 1px 1px 3px color-mod(var(--color-light-secondary) blend(#000 30%));
+  }
+
+  .button--secondary.button--active,
+  .button--secondary:active {
+    background-color: color-mod(var(--color-light-secondary) blend(#fff 40%));
+    border-color: color-mod(var(--color-light-secondary) blend(#fff 40%));
+    box-shadow: 1px 1px 3px color-mod(var(--color-light-secondary) blend(#000 30%));
+  }
+
+  .button--secondary.button--disabled,
+  .button--secondary:disabled {
+    background-color: var(--color-light-secondary);
+    border-color: var(--color-light-secondary);
+    color: color-mod(var(--color-light-secondary-contrast) blend(var(--color-light-secondary) 70%));
+  }
 
   /**
    * Variations
@@ -221,30 +264,13 @@ export default {
     background-color: transparent;
   }
 
-  .button--outline:hover {
-    box-shadow: 0 0 4px color-mod(var(--action-color) a(0.4));
-  }
-
-  .button--outline:focus {
-    box-shadow:
-      0 0 12px color-mod(var(--action-color) lightness(-5%) a(-0.3)),
-      0 0 1px color-mod(var(--action-color) lightness(-5%) a(-0.3));
-  }
-
-  .button--outline.button--active,
-  .button--outline:active {
-    color: var(--white);
-  }
-
-  .button--outline.button--disabled,
-  .button--outline:disabled {
-    border-color: var(--base-font-color) !important;
-    color: var(--base-font-color) !important;
+  .button--outline.button--normal {
+    border-color: var(--color-light-primary-contrast);
   }
 
   /**
    * States
-   **/
+   */
 
   .button:hover,
   .button:focus,
@@ -255,13 +281,13 @@ export default {
 
   .button--disabled,
   .button:disabled {
+    box-shadow: none !important;
     cursor: default;
-    opacity: 0.25;
   }
 
   /**
    * Sizes
-   **/
+   */
 
   .button--small {
     font-size: 0.8rem;
@@ -292,7 +318,7 @@ export default {
 
   .button--block {
     display: block;
-    margin: 0 0.5rem;
+    margin: 0.5rem 0;
     width: 100%;
   }
 
@@ -302,7 +328,7 @@ export default {
 
   /**
    * Children
-   **/
+   */
 
   /** TODO: Better icon handling in this component **/
   .button > svg {

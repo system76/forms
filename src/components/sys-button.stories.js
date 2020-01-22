@@ -17,21 +17,24 @@ storiesOf('Components|Button', module)
     props: {
       active: { default: boolean('active', false) },
       block: { default: boolean('block', false) },
-      color: { default: select('color', ['normal', 'destructive', 'suggested'], 'normal') },
+      color: { default: select('color', ['normal', 'primary', 'secondary'], 'normal') },
+      disabled: { default: boolean('disabled', false) },
       href: { default: text('href', '') },
       outline: { default: boolean('outline', false) },
-      size: { default: select('size', ['small', 'medium', 'large', 'huge'], 'medium') }
+      size: { default: select('size', ['small', 'medium', 'large', 'huge'], 'medium') },
+      text: { default: text('text', 'Button') }
     },
     template: `
       <sys-button
         :active="active"
         :block="block"
         :color="color"
+        :disabled="disabled"
         :href="href"
         :outline="outline"
         :size="size"
       >
-        button
+        {{ text }}
       </sys-button>
     `
   }))
