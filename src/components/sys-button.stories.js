@@ -22,6 +22,7 @@ storiesOf('Components|Button', module)
       href: { default: text('href', '') },
       outline: { default: boolean('outline', false) },
       size: { default: select('size', ['small', 'medium', 'large', 'huge'], 'medium') },
+      tag: { default: text('tag', '') },
       text: { default: text('text', 'Button') }
     },
     template: `
@@ -33,6 +34,7 @@ storiesOf('Components|Button', module)
         :href="href"
         :outline="outline"
         :size="size"
+        :tag="tag"
       >
         {{ text }}
       </sys-button>

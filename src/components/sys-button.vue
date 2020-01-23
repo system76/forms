@@ -6,7 +6,7 @@
 
 <template>
   <component
-    :is="tag"
+    :is="component"
     v-bind="binds"
     :class="classes"
     :disabled="disabled"
@@ -74,6 +74,11 @@ export default {
       type: String,
       default: 'medium',
       validator: (v) => ['small', 'medium', 'large', 'huge'].includes(v)
+    },
+
+    tag: {
+      type: String,
+      default: ''
     }
   },
 
@@ -129,8 +134,10 @@ export default {
       }
     },
 
-    tag () {
-      if (this.hasHref && !this.disabled) {
+    component () {
+      if (this.tag !== '') {
+        return this.tag
+      } else if (this.hasHref && !this.disabled) {
         if (!this.isExternalHref) {
           if (this.isNuxtApp) {
             return 'nuxt-link'

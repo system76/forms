@@ -15,6 +15,15 @@ test('renders as a button if no href is given', (t) => {
   t.true(button.contains('button'))
 })
 
+test('allows setting an arbitrary tag', (t) => {
+  const button = shallowMount(SysButton, {
+    propsData: { tag: 'div' }
+  })
+
+  t.log(button.html())
+  t.true(button.contains('div'))
+})
+
 test('renders as an a tag if href is set to outside source', (t) => {
   const button = shallowMount(SysButton, {
     propsData: { href: 'https://example.com' }
