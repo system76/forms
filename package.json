@@ -54,6 +54,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@ava/babel": "^1.0.0",
     "@babel/core": "^7.8.3",
     "@babel/plugin-transform-modules-commonjs": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
@@ -95,6 +96,12 @@
     "vue-template-compiler": "^2.6.11"
   },
   "ava": {
+    "babel": {
+			"compileAsTests": [
+        "./test/_browser.js",
+        "./test/_setup.js"
+      ]
+		},
     "require": [
       "./test/_browser.js",
       "./test/_setup.js"
