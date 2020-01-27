@@ -18,7 +18,6 @@ storiesOf('Components|Button', module)
       color: { default: select('color', ['normal', 'primary', 'secondary'], 'normal') },
       disabled: { default: boolean('disabled', false) },
       href: { default: text('href', '') },
-      outline: { default: boolean('outline', false) },
       size: { default: select('size', ['small', 'medium', 'large', 'huge'], 'medium') },
       tag: { default: text('tag', '') },
       text: { default: text('text', 'Button') }
@@ -30,7 +29,6 @@ storiesOf('Components|Button', module)
         :color="color"
         :disabled="disabled"
         :href="href"
-        :outline="outline"
         :size="size"
         :tag="tag"
       >
