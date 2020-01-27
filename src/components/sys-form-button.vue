@@ -31,7 +31,7 @@ function styleClasses (styles, keys) {
 }
 
 export default {
-  name: 'SysButton',
+  name: 'SysFormButton',
 
   model: {
     prop: 'active',
@@ -63,11 +63,6 @@ export default {
     href: {
       type: String,
       default: ''
-    },
-
-    outline: {
-      type: Boolean,
-      default: false
     },
 
     size: {
@@ -189,90 +184,74 @@ export default {
    */
 
   .button--normal {
-    background-color: var(--color-light-normal);
-    border-color: var(--color-light-normal);
-    color: var(--color-light-normal-contrast);
+    background-color: var(--color-light-form-button-normal);
+    border-color: var(--color-light-form-button-normal);
+    color: var(--color-light-form-button-normal-contrast);
   }
 
   .button--normal:hover,
   .button--normal:focus-within {
-    box-shadow: 1px 1px 3px color-mod(var(--color-light-normal) blend(#000 10%));
+    box-shadow: 1px 1px 3px var(--color-light-form-button-normal-shadow);
   }
 
   .button--normal.button--active,
   .button--normal:active {
-    background-color: color-mod(var(--color-light-normal) blend(#fff 40%));
-    border-color: color-mod(var(--color-light-normal) blend(#fff 40%));
-    box-shadow: 1px 1px 3px color-mod(var(--color-light-normal) blend(#000 10%));
+    background-color: var(--color-light-form-button-normal-light);
+    border-color: var(--color-light-form-button-normal-light);
+    box-shadow: 1px 1px 3px var(--color-light-form-button-normal-shadow);
   }
 
   .button--normal.button--disabled,
   .button--normal:disabled {
-    background-color: var(--color-light-normal);
-    border-color: var(--color-light-normal);
-    color: color-mod(var(--color-light-normal-contrast) blend(var(--color-light-normal) 60%));
+    background-color: var(--color-light-form-button-normal);
+    border-color: var(--color-light-form-button-normal);
   }
 
   .button--primary {
-    background-color: var(--color-light-primary);
-    border-color: var(--color-light-primary);
-    color: var(--color-light-primary-contrast);
+    background-color: var(--color-light-form-button-primary);
+    border-color: var(--color-light-form-button-primary);
+    color: var(--color-light-form-button-primary-contrast);
   }
 
   .button--primary:hover,
   .button--primary:focus-within {
-    box-shadow: 1px 1px 3px color-mod(var(--color-light-primary) blend(#000 30%));
+    box-shadow: 1px 1px 3px var(--color-light-form-button-primary-shadow);
   }
 
   .button--primary.button--active,
   .button--primary:active {
-    background-color: color-mod(var(--color-light-primary) blend(#fff 40%));
-    border-color: color-mod(var(--color-light-primary) blend(#fff 40%));
-    box-shadow: 1px 1px 3px color-mod(var(--color-light-primary) blend(#000 30%));
+    background-color: var(--color-light-form-button-primary-light);
+    border-color: var(--color-light-form-button-primary-light);
+    box-shadow: 1px 1px 3px var(--color-light-form-button-primary-shadow);
   }
 
   .button--primary.button--disabled,
   .button--primary:disabled {
-    background-color: var(--color-light-primary);
-    border-color: var(--color-light-primary);
-    color: color-mod(var(--color-light-primary-contrast) blend(var(--color-light-primary) 70%));
+    background-color: var(--color-light-form-button-primary);
+    border-color: var(--color-light-form-button-primary);
   }
 
   .button--secondary {
-    background-color: var(--color-light-secondary);
-    border-color: var(--color-light-secondary);
-    color: var(--color-light-secondary-contrast);
+    background-color: var(--color-light-form-button-secondary);
+    border-color: var(--color-light-form-button-secondary);
   }
 
   .button--secondary:hover,
   .button--secondary:focus-within {
-    box-shadow: 1px 1px 3px color-mod(var(--color-light-secondary) blend(#000 30%));
+    box-shadow: 1px 1px 3px var(--color-light-form-button-secondary-shadow);
   }
 
   .button--secondary.button--active,
   .button--secondary:active {
-    background-color: color-mod(var(--color-light-secondary) blend(#fff 40%));
-    border-color: color-mod(var(--color-light-secondary) blend(#fff 40%));
-    box-shadow: 1px 1px 3px color-mod(var(--color-light-secondary) blend(#000 30%));
+    background-color: var(--color-light-form-button-secondary-light);
+    border-color: var(--color-light-form-button-secondary-light);
+    box-shadow: 1px 1px 3px var(--color-light-form-button-secondary-shadow);
   }
 
   .button--secondary.button--disabled,
   .button--secondary:disabled {
-    background-color: var(--color-light-secondary);
-    border-color: var(--color-light-secondary);
-    color: color-mod(var(--color-light-secondary-contrast) blend(var(--color-light-secondary) 70%));
-  }
-
-  /**
-   * Variations
-   */
-
-  .button--outline {
-    background-color: transparent;
-  }
-
-  .button--outline.button--normal {
-    border-color: var(--color-light-primary-contrast);
+    background-color: var(--color-light-form-button-secondary);
+    border-color: var(--color-light-form-button-secondary);
   }
 
   /**
@@ -289,6 +268,7 @@ export default {
   .button--disabled,
   .button:disabled {
     box-shadow: none !important;
+    color: rgba(0, 0, 0, 0.4);
     cursor: default;
   }
 

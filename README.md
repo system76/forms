@@ -36,7 +36,20 @@ npm install --save-dev @system76/forms
 
 ### Tips
 
-1) You will need to ensure that babel `sourceType` is set to `unambiguous`. In
+- You will need to include the stylesheets for this package, as well as for
+`@system76/design`. If you are using nuxt, simply add this to the configuration
+file:
+
+```
+{
+  css: [
+    '@system76/design/dist/index.common.css',
+    '@system76/forms/dist/index.common.css'
+  ]
+}
+```
+
+- You will need to ensure that babel `sourceType` is set to `unambiguous`. In
 nuxt, this means adding the following to your configuration:
 
 ```

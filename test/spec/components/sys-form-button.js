@@ -6,17 +6,17 @@
 import { RouterLinkStub, shallowMount } from '@vue/test-utils'
 import test from 'ava'
 
-import SysButton from '../../../src/components/sys-button.vue'
+import SysFormButton from '../../../src/components/sys-form-button.vue'
 
 test('renders as a button if no href is given', (t) => {
-  const button = shallowMount(SysButton)
+  const button = shallowMount(SysFormButton)
 
   t.log(button.html())
   t.true(button.contains('button'))
 })
 
 test('allows setting an arbitrary tag', (t) => {
-  const button = shallowMount(SysButton, {
+  const button = shallowMount(SysFormButton, {
     propsData: { tag: 'div' }
   })
 
@@ -25,7 +25,7 @@ test('allows setting an arbitrary tag', (t) => {
 })
 
 test('renders as an a tag if href is set to outside source', (t) => {
-  const button = shallowMount(SysButton, {
+  const button = shallowMount(SysFormButton, {
     propsData: { href: 'https://example.com' }
   })
 
@@ -34,7 +34,7 @@ test('renders as an a tag if href is set to outside source', (t) => {
 })
 
 test('renders as an a tag if it\'s not an http/s request', (t) => {
-  const button = shallowMount(SysButton, {
+  const button = shallowMount(SysFormButton, {
     propsData: { href: 'tcp://127.0.0.1' }
   })
 
@@ -43,7 +43,7 @@ test('renders as an a tag if it\'s not an http/s request', (t) => {
 })
 
 test('renders as nuxt-link if in a nuxt app', (t) => {
-  const button = shallowMount(SysButton, {
+  const button = shallowMount(SysFormButton, {
     mocks: { $nuxt: {} },
     propsData: { href: '/example' },
     subs: { NuxtLink: RouterLinkStub }
@@ -54,7 +54,7 @@ test('renders as nuxt-link if in a nuxt app', (t) => {
 })
 
 test('renders as router-link if not in a nuxt app', (t) => {
-  const button = shallowMount(SysButton, {
+  const button = shallowMount(SysFormButton, {
     propsData: { href: '/example' },
     router: {},
     subs: { RouterLink: RouterLinkStub }

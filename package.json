@@ -52,7 +52,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@system76/design": "^4.0.0"
+  },
   "devDependencies": {
     "@ava/babel": "^1.0.0",
     "@babel/core": "^7.8.3",
@@ -64,7 +66,6 @@
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addon-viewport": "^5.3.8",
     "@storybook/vue": "^5.3.8",
-    "@system76/design": "^4.0.0",
     "@system76/eslint-config": "^2.0.0",
     "@vue/babel-preset-app": "^4.1.2",
     "@vue/test-utils": "^1.0.0-beta.31",
@@ -76,6 +77,7 @@
     "css-loader": "^3.4.2",
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.8.0",
+    "postcss-color-mod-function": "^3.0.3",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
     "require-extension-hooks": "^0.3.3",
@@ -97,11 +99,11 @@
   },
   "ava": {
     "babel": {
-			"compileAsTests": [
+      "compileAsTests": [
         "./test/_browser.js",
         "./test/_setup.js"
       ]
-		},
+    },
     "require": [
       "./test/_browser.js",
       "./test/_setup.js"

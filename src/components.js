@@ -3,4 +3,4 @@
  * Exports a bunch of helpful System76 form related components
  */
 
-export { default as SysButton } from './components/sys-button.vue'
+export { default as SysFormButton } from './components/sys-form-button.vue'
