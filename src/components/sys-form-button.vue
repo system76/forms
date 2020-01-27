@@ -173,6 +173,7 @@ export default {
     line-height: 1;
     text-align: center;
     text-decoration: none;
+    text-transform: uppercase;
     transition-duration: 100ms;
     transition-property: background-color, border-color, box-shadow;
     transition-timing-function: ease;
