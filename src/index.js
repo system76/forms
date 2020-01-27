@@ -4,6 +4,8 @@
  * bundler entry points.
  */
 
+import './assets/styles/main.css'
+
 import * as components from './components'
 
 export function install (Vue) {

@@ -6,14 +6,12 @@
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/vue'
 import { storiesOf } from '@storybook/vue'
 
-import SysButton from './sys-button.vue'
-
-console.log(SysButton)
+import SysFormButton from './sys-form-button.vue'
 
 storiesOf('Components|Button', module)
   .addDecorator(withKnobs)
   .add('default', () => ({
-    components: { SysButton },
+    components: { SysFormButton },
     props: {
       active: { default: boolean('active', false) },
       block: { default: boolean('block', false) },
@@ -26,7 +24,7 @@ storiesOf('Components|Button', module)
       text: { default: text('text', 'Button') }
     },
     template: `
-      <sys-button
+      <sys-form-button
         :active="active"
         :block="block"
         :color="color"
@@ -37,6 +35,6 @@ storiesOf('Components|Button', module)
         :tag="tag"
       >
         {{ text }}
-      </sys-button>
+      </sys-form-button>
     `
   }))

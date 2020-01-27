@@ -1,0 +1,16 @@
+:root {
+  --color-light-form-button-normal: #f6f6f6;
+  --color-light-form-button-normal-light: #f4f4f4;
+  --color-light-form-button-normal-shadow: #dbdbdb;
+  --color-light-form-button-normal-contrast: var(--color-warm-gray, #574f4a);
+
+  --color-light-form-button-primary: #ffa300;
+  --color-light-form-button-primary-light: #ffc45a;
+  --color-light-form-button-primary-shadow: #ab8137;
+  --color-light-form-button-primary-contrast: var(--color-black, #000);
+
+  --color-light-form-button-secondary: #6acad8;
+  --color-light-form-button-secondary-light: #91d0d9;
+  --color-light-form-button-secondary-shadow: #53888f;
+  --color-light-form-button-secondary-contrast: var(--color-black, #000);
+}
