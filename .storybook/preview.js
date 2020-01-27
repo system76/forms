@@ -1,4 +1,5 @@
 import '@system76/design/dist/index.common.css'
+import '../src/assets/styles/main.css'
 
 import centered from '@storybook/addon-centered/vue'
 import { withA11y } from '@storybook/addon-a11y'
