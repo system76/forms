@@ -83,7 +83,7 @@ export default {
         return {}
       }
 
-      switch (this.tag) {
+      switch (this.component) {
         case 'nuxt-link':
         case 'router-link':
           return { to: this.href }
