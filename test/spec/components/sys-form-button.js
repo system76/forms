@@ -69,7 +69,7 @@ test('uses to prop when rendering as a router-link', (t) => {
     propsData: {
       href: '/test',
       tag: 'router-link'
-    },
+    }
   })
 
   const html = button.html()
@@ -83,7 +83,7 @@ test('uses to prop when rendering as a nuxt-link', (t) => {
     propsData: {
       href: '/test',
       tag: 'nuxt-link'
-    },
+    }
   })
 
   const html = button.html()
