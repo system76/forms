@@ -63,3 +63,31 @@ test('renders as router-link if not in a nuxt app', (t) => {
   t.log(button.html())
   t.true(button.contains('router-link'))
 })
+
+test('uses to prop when rendering as a router-link', (t) => {
+  const button = shallowMount(SysFormButton, {
+    propsData: {
+      href: '/test',
+      tag: 'router-link'
+    }
+  })
+
+  const html = button.html()
+
+  t.log(html)
+  t.true(html.includes('to="/test"'))
+})
+
+test('uses to prop when rendering as a nuxt-link', (t) => {
+  const button = shallowMount(SysFormButton, {
+    propsData: {
+      href: '/test',
+      tag: 'nuxt-link'
+    }
+  })
+
+  const html = button.html()
+
+  t.log(html)
+  t.true(html.includes('to="/test"'))
+})
