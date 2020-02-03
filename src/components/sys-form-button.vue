@@ -235,6 +235,7 @@ export default {
   .button--secondary {
     background-color: var(--color-light-form-button-secondary);
     border-color: var(--color-light-form-button-secondary);
+    color: var(--color-light-form-button-secondary-contrast);
     text-transform: uppercase;
   }
 
