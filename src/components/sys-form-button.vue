@@ -173,7 +173,6 @@ export default {
     line-height: 1;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase;
     transition-duration: 100ms;
     transition-property: background-color, border-color, box-shadow;
     transition-timing-function: ease;
@@ -212,6 +211,7 @@ export default {
     background-color: var(--color-light-form-button-primary);
     border-color: var(--color-light-form-button-primary);
     color: var(--color-light-form-button-primary-contrast);
+    text-transform: uppercase;
   }
 
   .button--primary:hover,
@@ -235,6 +235,7 @@ export default {
   .button--secondary {
     background-color: var(--color-light-form-button-secondary);
     border-color: var(--color-light-form-button-secondary);
+    text-transform: uppercase;
   }
 
   .button--secondary:hover,
@@ -306,7 +307,7 @@ export default {
 
   .button--block {
     display: block;
-    margin: 0.5rem 0;
+    margin: 1rem 0;
     width: 100%;
   }
 
@@ -320,7 +321,7 @@ export default {
 
   /** TODO: Better icon handling in this component **/
   .button > svg {
-    height: 1rem;
-    margin-right: 0.5ch;
+    height: 1em;
+    margin: 0 0.5ch;
   }
 </style>
