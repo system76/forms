@@ -6,10 +6,10 @@ import SysFormButton from './sys-form-button'
 
 <Meta title="Components|Button" component={SysFormButton} />
 
-# SysFormButton
+# Button
 
-SysFormButton is a basic wrapper component for the native HTML `button` and for
-Vue Router `router-link` (or `nuxt-link` if you are using Nuxt).
+Button is a basic wrapper component for the native HTML `button` and for Vue
+Router `router-link` (or `nuxt-link` if you are using Nuxt).
 
 ## Props
 
@@ -17,8 +17,8 @@ Vue Router `router-link` (or `nuxt-link` if you are using Nuxt).
 
 ### Colors
 
-There are three different colors for `SysFormButton`. Each one works the exact
-same way, but changes the appearance.
+There are three different colors for Button. Each one works the exact same way,
+but changes the appearance.
 
 <Preview>
   <Story name="Colors">
@@ -113,6 +113,33 @@ only support `svg` icons right now.
           <sys-form-button direction="vertical">
             <font-awesome-icon :icon="faComment" />
             <span>vertical icon</span>
+          </sys-form-button>
+        </div>
+      `
+    }}
+  </Story>
+</Preview>
+
+### With hard set dimensions
+
+You can easily change the `height` and `width` of the button using CSS in the
+parent.
+
+<Preview>
+  <Story name="With hard set dimensions">
+    {{
+      components: { FontAwesomeIcon, SysFormButton },
+      data: () => ({
+        faComment: faComment
+      }),
+      template: `
+        <div>
+          <sys-form-button
+            direction="vertical"
+            style="height:150px;width:150px;"
+          >
+            <font-awesome-icon :icon="faComment" />
+            <span>this is now a square button</span>
           </sys-form-button>
         </div>
       `

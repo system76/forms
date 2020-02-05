@@ -212,12 +212,11 @@ export default {
     border: 0.15em solid transparent;
     cursor: pointer;
     display: inline-flex;
-    font-family: var(--font-family-slab);
     font-style: normal;
     font-weight: 400;
     justify-content: center;
     letter-spacing: 1px;
-    line-height: 1;
+    line-height: 24px;
     text-align: center;
     text-decoration: none;
     transition-duration: 100ms;
@@ -234,6 +233,7 @@ export default {
     background-color: var(--color-light-form-button-normal);
     border-color: var(--color-light-form-button-normal);
     color: var(--color-light-form-button-normal-contrast);
+    font-family: var(--font-family-sans);
   }
 
   .button--normal:hover,
@@ -258,6 +258,7 @@ export default {
     background-color: var(--color-light-form-button-primary);
     border-color: var(--color-light-form-button-primary);
     color: var(--color-light-form-button-primary-contrast);
+    font-family: var(--font-family-slab);
     text-transform: uppercase;
   }
 
@@ -283,6 +284,7 @@ export default {
     background-color: var(--color-light-form-button-secondary);
     border-color: var(--color-light-form-button-secondary);
     color: var(--color-light-form-button-secondary-contrast);
+    font-family: var(--font-family-slab);
     text-transform: uppercase;
   }
 
@@ -333,7 +335,7 @@ export default {
 
   .button--medium {
     font-size: 1rem;
-    padding: 0.6em;
+    padding: 0.4em 0.6em;
   }
 
   .button--large,
