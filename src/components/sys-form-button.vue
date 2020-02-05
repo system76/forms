@@ -55,6 +55,12 @@ export default {
       validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
     },
 
+    direction: {
+      type: String,
+      default: 'horizontal',
+      validator: (v) => ['horizontal', 'vertical'].includes(v)
+    },
+
     disabled: {
       type: Boolean,
       default: false
@@ -106,7 +112,8 @@ export default {
         'button--disabled': this.disabled,
         'button--outline': this.outline,
         [`button--${this.color}`]: true,
-        [`button--${this.size}`]: true
+        [`button--${this.size}`]: true,
+        [`button--${this.direction}`]: true
       })
     },
 
@@ -160,15 +167,18 @@ export default {
 <style module>
   .button {
     -webkit-font-smoothing: antialiased;
+    align-content: center;
+    align-items: center;
     appearance: none;
     background-color: transparent;
     border-radius: 0.25em;
     border: 0.15em solid transparent;
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
     font-family: var(--font-family-slab);
     font-style: normal;
     font-weight: 400;
+    justify-content: center;
     letter-spacing: 1px;
     line-height: 1;
     text-align: center;
@@ -307,7 +317,7 @@ export default {
    */
 
   .button--block {
-    display: block;
+    display: flex;
     margin: 1rem 0;
     width: 100%;
   }
@@ -316,13 +326,35 @@ export default {
     margin: 0.25rem 0.5rem;
   }
 
+  .button--horizontal {
+    flex-direction: row;
+  }
+
+  .button--vertical {
+    flex-direction: column;
+  }
+
   /**
    * Children
    */
 
-  /** TODO: Better icon handling in this component **/
-  .button > svg {
-    height: 1em;
-    margin: 0 0.5ch;
-  }
+   .button > svg {
+     height: 1em;
+   }
+
+   .button--horizontal > *:not(:first-child) {
+     margin-left: 0.5em;
+   }
+
+   .button--horizontal > *:not(:last-child) {
+     margin-right: 0.5em;
+   }
+
+   .button--vertical > *:not(:first-child) {
+     margin-top: 0.5em;
+   }
+
+   .button--vertical > *:not(:last-child) {
+     margin-bottom: 0.5em;
+   }
 </style>

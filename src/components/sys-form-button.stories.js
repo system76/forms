@@ -16,6 +16,7 @@ storiesOf('Components|Button', module)
       active: { default: boolean('active', false) },
       block: { default: boolean('block', false) },
       color: { default: select('color', ['normal', 'primary', 'secondary'], 'normal') },
+      direction: { default: select('direction', ['horizontal', 'vertical']) },
       disabled: { default: boolean('disabled', false) },
       href: { default: text('href', '') },
       size: { default: select('size', ['small', 'medium', 'large', 'huge'], 'medium') },
@@ -27,6 +28,7 @@ storiesOf('Components|Button', module)
         :active="active"
         :block="block"
         :color="color"
+        :direction="direction"
         :disabled="disabled"
         :href="href"
         :size="size"
@@ -42,6 +44,7 @@ storiesOf('Components|Button', module)
       active: { default: boolean('active', false) },
       block: { default: boolean('block', false) },
       color: { default: select('color', ['normal', 'primary', 'secondary'], 'normal') },
+      direction: { default: select('direction', ['horizontal', 'vertical']) },
       disabled: { default: boolean('disabled', false) },
       href: { default: text('href', '') },
       size: { default: select('size', ['small', 'medium', 'large', 'huge'], 'medium') },
@@ -53,6 +56,7 @@ storiesOf('Components|Button', module)
         :active="active"
         :block="block"
         :color="color"
+        :direction="direction"
         :disabled="disabled"
         :href="href"
         :size="size"
@@ -63,6 +67,35 @@ storiesOf('Components|Button', module)
           </path>
         </svg>
 
+        {{ text }}
+      </sys-form-button>
+    `
+  }))
+  .add('with parent dimensions', () => ({
+    components: { SysFormButton },
+    props: {
+      active: { default: boolean('active', false) },
+      block: { default: boolean('block', false) },
+      color: { default: select('color', ['normal', 'primary', 'secondary'], 'normal') },
+      direction: { default: select('direction', ['horizontal', 'vertical']) },
+      disabled: { default: boolean('disabled', false) },
+      href: { default: text('href', '') },
+      size: { default: select('size', ['small', 'medium', 'large', 'huge'], 'medium') },
+      tag: { default: text('tag', '') },
+      text: { default: text('text', 'Some Multiline Button Text') }
+    },
+    template: `
+      <sys-form-button
+        :active="active"
+        :block="block"
+        :color="color"
+        :direction="direction"
+        :disabled="disabled"
+        :href="href"
+        :size="size"
+        :tag="tag"
+        style="height:200px;width:200px;"
+      >
         {{ text }}
       </sys-form-button>
     `
