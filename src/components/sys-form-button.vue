@@ -343,18 +343,18 @@ export default {
    }
 
    .button--horizontal > *:not(:first-child) {
-     margin-left: 0.5em;
+     margin-left: 0.25em;
    }
 
    .button--horizontal > *:not(:last-child) {
-     margin-right: 0.5em;
+     margin-right: 0.25em;
    }
 
    .button--vertical > *:not(:first-child) {
-     margin-top: 0.5em;
+     margin-top: 0.25em;
    }
 
    .button--vertical > *:not(:last-child) {
-     margin-bottom: 0.5em;
+     margin-bottom: 0.25em;
    }
 </style>

@@ -67,7 +67,7 @@ storiesOf('Components|Button', module)
           </path>
         </svg>
 
-        {{ text }}
+        <span>{{ text }}</span>
       </sys-form-button>
     `
   }))
