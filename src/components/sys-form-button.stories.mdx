@@ -1,0 +1,121 @@
+import { faComment } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks'
+
+import SysFormButton from './sys-form-button'
+
+<Meta title="Components|Button" component={SysFormButton} />
+
+# SysFormButton
+
+SysFormButton is a basic wrapper component for the native HTML `button` and for
+Vue Router `router-link` (or `nuxt-link` if you are using Nuxt).
+
+## Props
+
+<Props of={SysFormButton} />
+
+### Colors
+
+There are three different colors for `SysFormButton`. Each one works the exact
+same way, but changes the appearance.
+
+<Preview>
+  <Story name="Colors">
+    {{
+      components: { SysFormButton },
+      template: `
+        <div>
+          <sys-form-button color="normal">normal</sys-form-button>
+          <sys-form-button color="primary">primary</sys-form-button>
+          <sys-form-button color="secondary">secondary</sys-form-button>
+        </div>
+      `
+    }}
+  </Story>
+</Preview>
+
+### Sizes
+
+There are four different sizes. Each one has it's own break points, so please
+check every break point when use change it.
+
+<Preview>
+  <Story name="Sizes">
+    {{
+      components: { SysFormButton },
+      template: `
+        <div>
+          <sys-form-button size="small">small</sys-form-button>
+          <sys-form-button size="medium">medium</sys-form-button>
+          <sys-form-button size="large">large</sys-form-button>
+          <sys-form-button size="huge">huge</sys-form-button>
+        </div>
+      `
+    }}
+  </Story>
+</Preview>
+
+### Direction
+
+There is a `direction` prop that allows you to change the direction the content
+will flow. This will not change any text wrapping settings, so you if you want
+to force a line break, you need to wrap the content in different tags like the
+example below.
+
+The most common use case for this is setting `direction="vertical"` with a
+custom `height` and `width` for square styled buttons.
+
+<Preview>
+  <Story name="Direction">
+    {{
+      components: { SysFormButton },
+      template: `
+        <div>
+          <sys-form-button direction="horizontal">
+            <span>this</span>
+            <span>is</span>
+            <span>horizontal</span>
+          </sys-form-button>
+          <sys-form-button direction="vertical">
+            <span>this</span>
+            <span>is</span>
+            <span>vertical</span>
+          </sys-form-button>
+        </div>
+      `
+    }}
+  </Story>
+</Preview>
+
+## Combinations
+
+### With an icon
+
+If you want to include an icon in your button, you can just add it as a child.
+There are a couple of things to keep in mind though. First off, you will need
+to wrap your text in a tag. We usually recommend just a `span`. Secondly, we
+only support `svg` icons right now.
+
+<Preview>
+  <Story name="With an icon">
+    {{
+      components: { FontAwesomeIcon, SysFormButton },
+      data: () => ({
+        faComment: faComment
+      }),
+      template: `
+        <div>
+          <sys-form-button direction="horizontal">
+            <font-awesome-icon :icon="faComment" />
+            <span>horizontal icon</span>
+          </sys-form-button>
+          <sys-form-button direction="vertical">
+            <font-awesome-icon :icon="faComment" />
+            <span>vertical icon</span>
+          </sys-form-button>
+        </div>
+      `
+    }}
+  </Story>
+</Preview>

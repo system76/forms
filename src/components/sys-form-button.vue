@@ -39,44 +39,68 @@ export default {
   },
 
   props: {
+    /**
+     * If it's in an active state. Same as HTML active attribute.
+     */
     active: {
       type: Boolean,
       default: false
     },
 
+    /**
+     * If it should be a full width block element.
+     */
     block: {
       type: Boolean,
       default: false
     },
 
+    /**
+     * The color the button should be.
+     */
     color: {
       type: String,
       default: 'normal',
       validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
     },
 
+    /**
+     * Which direction the content should flow.
+     */
     direction: {
       type: String,
       default: 'horizontal',
       validator: (v) => ['horizontal', 'vertical'].includes(v)
     },
 
+    /**
+     * If it's in a disabled state. Same as HTML disabled attribute.
+     */
     disabled: {
       type: Boolean,
       default: false
     },
 
+    /**
+     * The location the button so link to. Same as HTML a link href attribute.
+     */
     href: {
       type: String,
       default: ''
     },
 
+    /**
+     * The size of the button.
+     */
     size: {
       type: String,
       default: 'medium',
       validator: (v) => ['small', 'medium', 'large', 'huge'].includes(v)
     },
 
+    /**
+     * An override to what HTML tag it should render as.
+     */
     tag: {
       type: String,
       default: ''
@@ -157,7 +181,20 @@ export default {
 
   methods: {
     onClick (e) {
+      /**
+       * When the button is clicked.
+       *
+       * @event click
+       * @property {Event} MouseEvent Same as the native onclick event
+       */
       this.$emit('click', e)
+
+      /**
+       * When the button active state switches.
+       *
+       * @event toggle
+       * @property {Boolean} active The opposite of the current active prop
+       */
       this.$emit('toggle', !this.active)
     }
   }
