@@ -72,6 +72,17 @@ build: {
 
 5) Start hacking
 
+### Documenting
+
+We use styleguide to document our components. Please write your own stories
+and documentation in markdown format like the other `.mdx` files. Along with
+storybook, we also use styleguidist for documentation in the component file.
+This gets outputted in the form of nice prop tables in storybook. Here are some
+resources on how to get started:
+
+- [Storybook markdown syntax](https://github.com/storybookjs/storybook/blob/next/addons/docs/docs/mdx.md)
+- [vue-docgen-api](https://github.com/vue-styleguidist/vue-styleguidist/tree/dev/packages/vue-docgen-api#full-example)
+
 ## Deployment
 
 To [trigger a release](https://semantic-release.gitbook.io/semantic-release/#triggering-a-release),

@@ -39,38 +39,68 @@ export default {
   },
 
   props: {
+    /**
+     * If it's in an active state. Same as HTML active attribute.
+     */
     active: {
       type: Boolean,
       default: false
     },
 
+    /**
+     * If it should be a full width block element.
+     */
     block: {
       type: Boolean,
       default: false
     },
 
+    /**
+     * The color the button should be.
+     */
     color: {
       type: String,
       default: 'normal',
       validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
     },
 
+    /**
+     * Which direction the content should flow.
+     */
+    direction: {
+      type: String,
+      default: 'horizontal',
+      validator: (v) => ['horizontal', 'vertical'].includes(v)
+    },
+
+    /**
+     * If it's in a disabled state. Same as HTML disabled attribute.
+     */
     disabled: {
       type: Boolean,
       default: false
     },
 
+    /**
+     * The location the button so link to. Same as HTML a link href attribute.
+     */
     href: {
       type: String,
       default: ''
     },
 
+    /**
+     * The size of the button.
+     */
     size: {
       type: String,
       default: 'medium',
       validator: (v) => ['small', 'medium', 'large', 'huge'].includes(v)
     },
 
+    /**
+     * An override to what HTML tag it should render as.
+     */
     tag: {
       type: String,
       default: ''
@@ -106,7 +136,8 @@ export default {
         'button--disabled': this.disabled,
         'button--outline': this.outline,
         [`button--${this.color}`]: true,
-        [`button--${this.size}`]: true
+        [`button--${this.size}`]: true,
+        [`button--${this.direction}`]: true
       })
     },
 
@@ -150,7 +181,20 @@ export default {
 
   methods: {
     onClick (e) {
+      /**
+       * When the button is clicked.
+       *
+       * @event click
+       * @property {Event} MouseEvent Same as the native onclick event
+       */
       this.$emit('click', e)
+
+      /**
+       * When the button active state switches.
+       *
+       * @event toggle
+       * @property {Boolean} active The opposite of the current active prop
+       */
       this.$emit('toggle', !this.active)
     }
   }
@@ -160,17 +204,19 @@ export default {
 <style module>
   .button {
     -webkit-font-smoothing: antialiased;
+    align-content: center;
+    align-items: center;
     appearance: none;
     background-color: transparent;
     border-radius: 0.25em;
     border: 0.15em solid transparent;
     cursor: pointer;
-    display: inline-block;
-    font-family: var(--font-family-slab);
+    display: inline-flex;
     font-style: normal;
     font-weight: 400;
+    justify-content: center;
     letter-spacing: 1px;
-    line-height: 1;
+    line-height: 24px;
     text-align: center;
     text-decoration: none;
     transition-duration: 100ms;
@@ -187,6 +233,7 @@ export default {
     background-color: var(--color-light-form-button-normal);
     border-color: var(--color-light-form-button-normal);
     color: var(--color-light-form-button-normal-contrast);
+    font-family: var(--font-family-sans);
   }
 
   .button--normal:hover,
@@ -211,6 +258,7 @@ export default {
     background-color: var(--color-light-form-button-primary);
     border-color: var(--color-light-form-button-primary);
     color: var(--color-light-form-button-primary-contrast);
+    font-family: var(--font-family-slab);
     text-transform: uppercase;
   }
 
@@ -236,6 +284,7 @@ export default {
     background-color: var(--color-light-form-button-secondary);
     border-color: var(--color-light-form-button-secondary);
     color: var(--color-light-form-button-secondary-contrast);
+    font-family: var(--font-family-slab);
     text-transform: uppercase;
   }
 
@@ -286,7 +335,7 @@ export default {
 
   .button--medium {
     font-size: 1rem;
-    padding: 0.6em;
+    padding: 0.4em 0.6em;
   }
 
   .button--large,
@@ -307,7 +356,7 @@ export default {
    */
 
   .button--block {
-    display: block;
+    display: flex;
     margin: 1rem 0;
     width: 100%;
   }
@@ -316,13 +365,35 @@ export default {
     margin: 0.25rem 0.5rem;
   }
 
+  .button--horizontal {
+    flex-direction: row;
+  }
+
+  .button--vertical {
+    flex-direction: column;
+  }
+
   /**
    * Children
    */
 
-  /** TODO: Better icon handling in this component **/
-  .button > svg {
-    height: 1em;
-    margin: 0 0.5ch;
-  }
+   .button > svg {
+     height: 1em;
+   }
+
+   .button--horizontal > *:not(:first-child) {
+     margin-left: 0.25em;
+   }
+
+   .button--horizontal > *:not(:last-child) {
+     margin-right: 0.25em;
+   }
+
+   .button--vertical > *:not(:first-child) {
+     margin-top: 0.25em;
+   }
+
+   .button--vertical > *:not(:last-child) {
+     margin-bottom: 0.25em;
+   }
 </style>
