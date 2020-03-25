@@ -1,0 +1,22 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks'
+
+import SysLabel from './sys-label'
+
+<Meta title="Low Level Components|Label" component={SysLabel} />
+
+# Label
+
+This is a super basic style only component. Nothing special.
+
+### Normal
+
+This is how the input component looks without any given props or data.
+
+<Preview>
+  <Story height="100px" name="Normal">
+    {{
+      components: { SysLabel },
+      template: `<sys-label>Label</sys-label>`
+    }}
+  </Story>
+</Preview>

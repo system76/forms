@@ -1,5 +1,5 @@
 /**
- * src/components/sys-button.vue
+ * src/components/sys-form-button.vue
  * The default button for System76 projects. It always looks like a button, but
  * changes DOM tags based on the props given.
  */
@@ -18,17 +18,7 @@
 </template>
 
 <script>
-function styleClasses (styles, keys) {
-  const output = []
-
-  Object.keys(keys).forEach((key) => {
-    if (keys[key]) {
-      output.push(styles[key])
-    }
-  })
-
-  return output
-}
+import { filterObjectKeys } from '../utility'
 
 export default {
   name: 'SysFormButton',
@@ -129,7 +119,7 @@ export default {
     },
 
     classes () {
-      return styleClasses(this.$style, {
+      return filterObjectKeys(this.$style, {
         button: true,
         'button--active': this.active,
         'button--block': this.block,
