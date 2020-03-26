@@ -40,15 +40,14 @@ export async function takeScreenshot (el, p) {
  * @return {void}
  */
 export async function assertScreenshot (el, p, options = { threshold: 0.1 }) {
-  const fixture = abs(fixtureFile(p))
+  const fixture = fixtureFile(p)
 
-  if (await fileExists(fixture)) {
+  if (await fileExists(abs(fixture))) {
     const current = await takeScreenshot(el, tempFile())
-    const { passed, percentage } = await compare(current, fixture, options)
+    const { passed, percentage } = await compare(current, abs(fixture), options)
 
-    console.log('passed', passed)
     await t.expect(percentage).gte(1 - options.threshold, 'Screenshot does not meet threshold')
   } else {
-    await takeScreenshot(el, p)
+    await takeScreenshot(el, fixture)
   }
 }

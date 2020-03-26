@@ -120,28 +120,25 @@ export async function compare(received, snapshot, options) {
     const images = [receivedImage, diffImage, snapshotImage]
 
     const compositeResultImage = new PNG({
-      height: Math.max(images.map((i) => i.height)),
+      height: Math.max(...images.map((i) => i.height)),
       width: images.map((i) => i.width).reduce((a, b) => (a + b), 0)
     })
 
     images.forEach((i, idx) => {
-      PNG.bitblt(
-        i.imageData,
+      i.bitblt(
         compositeResultImage,
         0,
         0,
         i.width,
         i.height,
-        images.slice(0, i).reduce((a = 0, b) => (a + b), 0),
+        images.slice(0, idx).map((i) => i.width).reduce((a, b) => (a + b), 0),
         0
       )
     })
 
     const diffParse = path.parse(received)
     const diffName = `${diffParse.name}-diff`
-    const diffPath = path.format({ ...diffParse, name: diffName })
-
-    console.log('full path', diffPath)
+    const diffPath = path.format({ ...diffParse, base: null, name: diffName })
     const diffBuffer = PNG.sync.write(compositeResultImage, { filterType: 4 })
 
     await write(diffPath, diffBuffer)
@@ -149,6 +146,6 @@ export async function compare(received, snapshot, options) {
 
   return {
     passed,
-    percentage: (diffPixelCount / (height * width))
+    percentage: (1 - diffPixelCount / (height * width))
   }
 }
