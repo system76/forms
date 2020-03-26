@@ -4,7 +4,6 @@
  */
 
 import * as fs from 'fs'
-import * as path from 'path'
 
 function pathExists (p, fn = (s) => s.isFile()) {
   return new Promise((resolve, reject) => {

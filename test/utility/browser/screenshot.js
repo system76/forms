@@ -4,10 +4,10 @@
  */
 
 import { uptime } from 'os'
-import { t } from 'testcafe'
 import * as path from 'path'
+import { t } from 'testcafe'
 
-import { fileExists, mkdir } from './fs'
+import { fileExists } from './fs'
 import { compare } from './image'
 
 const abs = (name) => path.resolve(__dirname, '../../screenshots', name)
@@ -44,7 +44,7 @@ export async function assertScreenshot (el, p, options = { threshold: 0.1 }) {
 
   if (await fileExists(abs(fixture))) {
     const current = await takeScreenshot(el, tempFile())
-    const { passed, percentage } = await compare(current, abs(fixture), options)
+    const { percentage } = await compare(current, abs(fixture), options)
 
     await t.expect(percentage).gte(1 - options.threshold, 'Screenshot does not meet threshold')
   } else {

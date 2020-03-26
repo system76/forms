@@ -87,7 +87,7 @@ const alignImagesToSameSize = (firstImage, secondImage) => {
  * @param {Object} [options]
  * @return {void}
  */
-export async function compare(received, snapshot, options) {
+export async function compare (received, snapshot, options) {
   const diffOptions = Object.assign({}, options)
 
   const rawReceivedImage = PNG.sync.read(fs.readFileSync(received))
@@ -100,7 +100,7 @@ export async function compare(received, snapshot, options) {
 
   const [receivedImage, snapshotImage] = hasSizeMismatch
     ? alignImagesToSameSize(rawReceivedImage, rawSnapshotImage)
-    : [rawReceivedImage, rawSnapshotImage];
+    : [rawReceivedImage, rawSnapshotImage]
 
   const { height, width } = receivedImage
   const diffImage = new PNG({ height, width })
