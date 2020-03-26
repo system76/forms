@@ -8,7 +8,7 @@ fixture`SysFormButton Colors`
 const button = (i) => Selector(`#root button:nth-child(${i})`)
 
 test('screenshots', async (t) => {
-  await assertScreenshot(t, button(1), `sys-form-button/colors-normal`)
-  await assertScreenshot(t, button(2), `sys-form-button/colors-primary`)
-  await assertScreenshot(t, button(3), `sys-form-button/colors-secondary`)
+  await assertScreenshot(button(1), `sys-form-button/colors-normal`)
+  await assertScreenshot(button(2), `sys-form-button/colors-primary`)
+  await assertScreenshot(button(3), `sys-form-button/colors-secondary`)
 })
