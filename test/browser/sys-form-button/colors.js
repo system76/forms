@@ -3,7 +3,7 @@ import { Selector } from 'testcafe'
 import { assertScreenshot } from '../../utility/browser'
 
 fixture`SysFormButton Colors`
-  .page`http://localhost:7684/iframe.html?id=components-button--colors&viewMode=story`
+  .page`http://localhost:7684/iframe.html?id=high-level-components-button--colors&viewMode=story`
 
 const button = (i) => Selector(`#root button:nth-child(${i})`)
 
