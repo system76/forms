@@ -14,38 +14,32 @@ Here are a bunch of example forms that you can use for styling and markup.
 This is how a basic form with some simple inputs would look.
 
 <Preview>
-  <Story height="600px" name="basic-form">
+  <Story height="400px" name="basic-form">
     {{
       components: { SysFormButton, SysFormInput },
+      data: () => ({
+        email: '',
+        password: ''
+      }),
       template: `
-        <form>
+        <form action="javascript:confirm('submit')">
           <sys-form-input
-            id="serial"
-            label="Select or enter the serial # of your product"
-            name="serial"
-            required
+            v-model="email"
+            id="email"
+            label="Email Address"
+            name="email"
+            validation="email|required"
           />
           <sys-form-input
-            id="product"
-            label="Select a product"
-            name="product"
-            required
-          />
-          <sys-form-input
-            id="subject"
-            label="Subject"
-            name="subject"
-            required
-          />
-          <sys-form-input
-            id="issue"
-            label="Describe your issue"
-            name="issue"
-            required
+            v-model="password"
+            id="password"
+            label="Password"
+            name="password"
+            validation="required|min:6"
           />
           <div>
             <sys-form-button color="primary">
-              Submit Ticket
+              Login
             </sys-form-button>
           </div>
         </form>
