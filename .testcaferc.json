@@ -1,0 +1,11 @@
+{
+  "appCommand": "start-storybook --ci --docs --port 7684 --quiet",
+  "appInitDelay": 10000,
+  "concurrency": 1,
+  "screenshots": {
+    "path": "test/screenshots",
+    "pathPattern": "results/test-${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.png",
+    "takeOnFails": true
+  },
+  "quarantineMode": true
+}
