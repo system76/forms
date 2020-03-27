@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Examples|Validation" />
+
+# Form Validation
+
+`@system76/forms` includes form validation for inputs. It uses `vee-validate`
+behind the scenes, but exposes everything you should need in this package. There
+are a couple of benefits to this. To start, we have rewrote all of the error
+messages to match the default Elixir Ecto error messages. This ensures
+consistency for the user and makes it impossible to tell if the error came from
+client side validation, or the server.
+
+One thing to keep in mind, we do not infer validation rules. _Everything_
+(including attributes like `required`) should be given in the `validation` prop.
+This ensures there is _one true way_ for validation and simplifies the
+readability.
+
+### Adding Rules
+
+We only expose a small amount of very commonly used rules. If there are other
+rules that are needed, you can open a PR to this package, or implement it where
+you need it. To do so,
+[look at the vee-validate docs](https://logaretm.github.io/vee-validate/guide/basics.html#adding-rules).
+
+### Available Rules
+
+These are the default rules that we have included in the package.
+
+- [between](https://logaretm.github.io/vee-validate/guide/rules.html#between)
+- [confirmed](https://logaretm.github.io/vee-validate/guide/rules.html#confirmed)
+- [digits](https://logaretm.github.io/vee-validate/guide/rules.html#digits)
+- [email](https://logaretm.github.io/vee-validate/guide/rules.html#email)
+- [integer](https://logaretm.github.io/vee-validate/guide/rules.html#integer)
+- [length](https://logaretm.github.io/vee-validate/guide/rules.html#length)
+- [max](https://logaretm.github.io/vee-validate/guide/rules.html#max)
+- [min](https://logaretm.github.io/vee-validate/guide/rules.html#min)
+- [regex](https://logaretm.github.io/vee-validate/guide/rules.html#regex)
+- [required](https://logaretm.github.io/vee-validate/guide/rules.html#required)

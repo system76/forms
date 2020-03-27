@@ -10,13 +10,26 @@ This is a super basic style only component. Nothing special.
 
 ### Normal
 
-This is how the input component looks without any given props or data.
+This is how the component looks normally.
 
 <Preview>
   <Story height="100px" name="Normal">
     {{
       components: { SysLabel },
       template: `<sys-label>Label</sys-label>`
+    }}
+  </Story>
+</Preview>
+
+### Invalid
+
+This is how the component looks when it's in an invalid state.
+
+<Preview>
+  <Story height="100px" name="Invalid">
+    {{
+      components: { SysLabel },
+      template: `<sys-label invalid>Label</sys-label>`
     }}
   </Story>
 </Preview>

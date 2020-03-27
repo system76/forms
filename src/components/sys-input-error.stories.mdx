@@ -1,0 +1,25 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks'
+
+import SysInputError from './sys-input-error'
+
+<Meta title="Low Level Components|Input Error" component={SysInputError} />
+
+# Input Error
+
+This is a super basic style only component that goes under an input to show a
+user error. Keep in mind that it takes up space even if there is no text. This
+is so the form does not shift during validation and when the user is entering
+information.
+
+### Normal
+
+This is how the component looks.
+
+<Preview>
+  <Story height="100px" name="Normal">
+    {{
+      components: { SysInputError },
+      template: `<sys-input-error>field is required</sys-input-error>`
+    }}
+  </Story>
+</Preview>

@@ -5,8 +5,7 @@
 
 <template>
   <label
-    v-bind="$attrs"
-    :class="$style.label"
+    :class="classes"
     v-on="$listeners"
   >
     <slot />
@@ -14,8 +13,26 @@
 </template>
 
 <script>
+import { filterObjectKeys } from '../utility/vue'
+
 export default {
-  name: 'SysLabel'
+  name: 'SysLabel',
+
+  props: {
+    invalid: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  computed: {
+    classes () {
+      return filterObjectKeys(this.$style, {
+        label: true,
+        invalid: this.invalid
+      })
+    }
+  }
 }
 </script>
 
@@ -25,5 +42,9 @@ export default {
     font-family: var(--font-family-sans);
     font-size: 1rem;
     user-select: none;
+  }
+
+  .invalid {
+    color: var(--color-light-form-input-invalid);
   }
 </style>

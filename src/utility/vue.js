@@ -1,5 +1,5 @@
 /**
- * src/utility.js
+ * src/utility/vue.js
  * Some random Vue helpers.
  */
 

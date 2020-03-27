@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { filterObjectKeys } from '../utility'
+import { filterObjectKeys } from '../utility/vue'
 
 export default {
   name: 'SysFormButton',
