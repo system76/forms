@@ -64,6 +64,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/vue-fontawesome": "^0.1.9",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "@storybook/addon-a11y": "^5.3.12",
     "@storybook/addon-backgrounds": "^5.3.12",
     "@storybook/addon-centered": "^5.3.12",

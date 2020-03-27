@@ -1,3 +1,4 @@
+import resolve from '@rollup/plugin-node-resolve'
 import postcssImport from 'postcss-import'
 import postcssPresetEnv from 'postcss-preset-env'
 import babel from 'rollup-plugin-babel'
@@ -10,9 +11,10 @@ import vue from 'rollup-plugin-vue'
 
 const DEFAULT_CONFIG = {
   input: 'src/entry.js',
-  external: ['vee-validate', 'vue'],
+  external: ['vue'],
   plugins: {
     preVue: [
+      resolve(),
       replace({
         ENVIRONMENT: JSON.stringify('production')
       }),

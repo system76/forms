@@ -45,9 +45,9 @@
 <script>
 import { ValidationProvider } from 'vee-validate'
 
-import SysInput from './sys-input'
-import SysInputError from './sys-input-error'
-import SysLabel from './sys-label'
+import SysInputError from './sys-input-error.vue'
+import SysInput from './sys-input.vue'
+import SysLabel from './sys-label.vue'
 
 export default {
   name: 'SysFormInput',
