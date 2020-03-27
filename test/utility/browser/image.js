@@ -1,6 +1,8 @@
 /**
  * test/utility/browser/image.js
  * A bunch of image compare functions
+ * Most of the code here was taken from the amazing `jest-image-snapshot`
+ * package.
  */
 
 import * as fs from 'fs'
