@@ -1,0 +1,88 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks'
+
+import SysInput from './sys-input'
+
+<Meta title="Low Level Components|Input" component={SysInput} />
+
+# Input
+
+This is a super basic style only component. It has no special functionality
+to the standard html `input` tag, except for the style.
+
+## Props
+
+<Props of={SysInput} />
+
+### Normal
+
+This is how the input component looks without any given props or data.
+
+<Preview>
+  <Story height="100px" name="Normal">
+    {{
+      components: { SysInput },
+      template: `<sys-input />`
+    }}
+  </Story>
+</Preview>
+
+### With Placeholder
+
+This is how the input component looks when you give it some placeholder text.
+
+<Preview>
+  <Story height="100px" name="Placeholder">
+    {{
+      components: { SysInput },
+      template: `<sys-input placeholder="Placeholder Text" />`
+    }}
+  </Story>
+</Preview>
+
+### Disabled
+
+This is how the input will look when it's disabled.
+
+<Preview>
+  <Story height="100px" name="Disabled">
+    {{
+      components: { SysInput },
+      template: `<sys-input disabled value="text" />`
+    }}
+  </Story>
+</Preview>
+
+### Invalid
+
+This is how the input will look when it is invalid.
+
+<Preview>
+  <Story height="100px" name="Invalid">
+    {{
+      components: { SysInput },
+      template: `<sys-input invalid />`
+    }}
+  </Story>
+</Preview>
+
+### With List
+
+This is how the input will look when you give it a list of possible values.
+
+<Preview>
+  <Story height="100px" name="List">
+    {{
+      components: { SysInput },
+      template: `
+        <div>
+          <sys-input list="list" />
+          <datalist id="list">
+            <option value="William Adama">William Adama</option>
+            <option value="Laura Roslin">Laura Roslin</option>
+            <option value="Kara Thrace">Kara Thrace</option>
+          </datalist>
+        </div>
+      `
+    }}
+  </Story>
+</Preview>

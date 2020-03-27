@@ -1,6 +1,6 @@
 /**
- * test/spec/components/sys-button.js
- * Tests sys-button component
+ * test/spec/components/sys-form-button.js
+ * Tests sys-form-button component
  */
 
 import { RouterLinkStub, shallowMount } from '@vue/test-utils'

@@ -1,0 +1,71 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks'
+
+import SysSelect from './sys-select'
+
+<Meta title="Low Level Components|Select" component={SysSelect} />
+
+# Input
+
+This is a super basic style only component. It has no special functionality
+to the standard html `select` tag, except for the style.
+
+## Props
+
+<Props of={SysSelect} />
+
+### Normal
+
+This is how the select component looks without any given props or data.
+
+<Preview>
+  <Story height="100px" name="Normal">
+    {{
+      components: { SysSelect },
+      template: `
+        <sys-select>
+          <option value="William Adama">William Adama</option>
+          <option value="Laura Roslin">Laura Roslin</option>
+          <option value="Kara Thrace">Kara Thrace</option>
+        </sys-select>
+      `
+    }}
+  </Story>
+</Preview>
+
+### Disabled
+
+This is how the input will look when it's disabled.
+
+<Preview>
+  <Story height="100px" name="Disabled">
+    {{
+      components: { SysSelect },
+      template: `
+        <sys-select disabled>
+          <option value="William Adama">William Adama</option>
+          <option value="Laura Roslin" selected>Laura Roslin</option>
+          <option value="Kara Thrace">Kara Thrace</option>
+        </sys-select>
+      `
+    }}
+  </Story>
+</Preview>
+
+### Invalid
+
+This is how the input will look when it is invalid.
+
+<Preview>
+  <Story height="100px" name="Invalid">
+    {{
+      components: { SysSelect },
+      template: `
+        <sys-select invalid="in the brig">
+          <option value="William Adama">William Adama</option>
+          <option value="Laura Roslin">Laura Roslin</option>
+          <option value="Kara Thrace" selected>Kara Thrace</option>
+        </sys-select>
+      `
+    }}
+  </Story>
+</Preview>

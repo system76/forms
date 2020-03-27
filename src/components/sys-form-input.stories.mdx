@@ -1,0 +1,90 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks'
+
+import SysFormInput from './sys-form-input'
+
+<Meta title="High Level Components|Input" component={SysFormInput} />
+
+# Input
+
+This is a high level text input that includes the label, input, validation, and
+error message handling.
+
+## Props
+
+<Props of={SysFormInput} />
+
+### Normal
+
+This is how the form input component looks without any given props or data.
+
+<Preview>
+  <Story height="200px" name="Normal">
+    {{
+      components: { SysFormInput },
+      template: `
+        <sys-form-input
+          id="normal"
+          label="Input"
+        />
+      `
+    }}
+  </Story>
+</Preview>
+
+### With Placeholder
+
+This is how the input component looks when you give it some placeholder text.
+
+<Preview>
+  <Story height="200px" name="Placeholder">
+    {{
+      components: { SysFormInput },
+      template: `
+        <sys-form-input
+          id="placeholder"
+          label="Input"
+          placeholder="Placeholder Text"
+        />
+      `
+    }}
+  </Story>
+</Preview>
+
+### Disabled
+
+This is how the input will look when it's disabled.
+
+<Preview>
+  <Story height="200px" name="Disabled">
+    {{
+      components: { SysFormInput },
+      template: `
+        <sys-form-input
+          disabled
+          id="disabled"
+          label="Input"
+          value="text"
+        />
+      `
+    }}
+  </Story>
+</Preview>
+
+### Invalid
+
+This is how the input will look when it is invalid.
+
+<Preview>
+  <Story height="200px" name="Invalid">
+    {{
+      components: { SysFormInput },
+      template: `
+        <sys-form-input
+          id="invalid"
+          invalid="this is an error"
+          label="Input"
+        />
+      `
+    }}
+  </Story>
+</Preview>

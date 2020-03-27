@@ -1,0 +1,55 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks'
+
+import SysFormInput from './sys-form-input'
+import SysFormButton from './sys-form-button'
+
+<Meta title="Examples|Forms" />
+
+# Form Examples
+
+Here are a bunch of example forms that you can use for styling and markup.
+
+### A basic form
+
+This is how a basic form with some simple inputs would look.
+
+<Preview>
+  <Story height="600px" name="basic-form">
+    {{
+      components: { SysFormButton, SysFormInput },
+      template: `
+        <form>
+          <sys-form-input
+            id="serial"
+            label="Select or enter the serial # of your product"
+            name="serial"
+            required
+          />
+          <sys-form-input
+            id="product"
+            label="Select a product"
+            name="product"
+            required
+          />
+          <sys-form-input
+            id="subject"
+            label="Subject"
+            name="subject"
+            required
+          />
+          <sys-form-input
+            id="issue"
+            label="Describe your issue"
+            name="issue"
+            required
+          />
+          <div>
+            <sys-form-button color="primary">
+              Submit Ticket
+            </sys-form-button>
+          </div>
+        </form>
+      `
+    }}
+  </Story>
+</Preview>
