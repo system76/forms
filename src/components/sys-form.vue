@@ -155,6 +155,7 @@ export default {
   .form {
     display: block;
     margin: 0;
+    min-width: calc(320px - 2rem);
     padding: 0;
   }
 
