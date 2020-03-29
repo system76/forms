@@ -16,54 +16,54 @@
 </template>
 
 <script>
-export default {
-  name: 'SysSelect',
+  export default {
+    name: 'SysSelect',
 
-  props: {
-    /** If this input is disabled and should not take input */
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-
-    /**
-     * If this input is invalid and requires changes. You can give an error
-     * string to set the html invalid text.
-     */
-    invalid: {
-      type: [Boolean, String],
-      default: false
-    }
-  },
-
-  computed: {
-    validity: {
-      get () {
-        return this.$el.validity.valid
+    props: {
+      /** If this input is disabled and should not take input */
+      disabled: {
+        type: Boolean,
+        default: false
       },
 
-      set (value) {
-        if (typeof value === 'string') {
-          this.$el.setCustomValidity(value)
-        } else if (value === true) {
-          this.$el.setCustomValidity('invalid')
-        } else {
-          this.$el.setCustomValidity('')
+      /**
+       * If this input is invalid and requires changes. You can give an error
+       * string to set the html invalid text.
+       */
+      invalid: {
+        type: [Boolean, String],
+        default: false
+      }
+    },
+
+    computed: {
+      validity: {
+        get () {
+          return this.$el.validity.valid
+        },
+
+        set (value) {
+          if (typeof value === 'string') {
+            this.$el.setCustomValidity(value)
+          } else if (value === true) {
+            this.$el.setCustomValidity('invalid')
+          } else {
+            this.$el.setCustomValidity('')
+          }
         }
       }
-    }
-  },
+    },
 
-  watch: {
-    invalid (invalid) {
-      this.validity = invalid
-    }
-  },
+    watch: {
+      invalid (invalid) {
+        this.validity = invalid
+      }
+    },
 
-  mounted () {
-    this.validity = this.invalid
+    mounted () {
+      this.validity = this.invalid
+    }
   }
-}
 </script>
 
 <style module>

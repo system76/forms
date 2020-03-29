@@ -43,99 +43,99 @@
 </template>
 
 <script>
-import { ValidationProvider } from 'vee-validate'
+  import { ValidationProvider } from 'vee-validate'
 
-import SysInputError from './sys-input-error.vue'
-import SysInput from './sys-input.vue'
-import SysLabel from './sys-label.vue'
+  import SysInputError from './sys-input-error.vue'
+  import SysInput from './sys-input.vue'
+  import SysLabel from './sys-label.vue'
 
-export default {
-  name: 'SysFormInput',
+  export default {
+    name: 'SysFormInput',
 
-  components: {
-    SysInput,
-    SysInputError,
-    SysLabel,
-    ValidationProvider
-  },
-
-  inheritAttrs: false,
-
-  model: {
-    event: 'value'
-  },
-
-  props: {
-    /** If this input is disabled and should not take input */
-    disabled: {
-      type: Boolean,
-      default: false
+    components: {
+      SysInput,
+      SysInputError,
+      SysLabel,
+      ValidationProvider
     },
 
-    /**
-     * The input id and the label `for` attribute. This is required, but is not
-     * user facing.
-     */
-    id: {
-      type: String,
-      required: true
+    inheritAttrs: false,
+
+    model: {
+      event: 'value'
     },
 
-    /** If the input should be validated immediatly on render */
-    immediate: {
-      type: Boolean,
-      default: false
+    props: {
+      /** If this input is disabled and should not take input */
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+
+      /**
+       * The input id and the label `for` attribute. This is required, but is not
+       * user facing.
+       */
+      id: {
+        type: String,
+        required: true
+      },
+
+      /** If the input should be validated immediatly on render */
+      immediate: {
+        type: Boolean,
+        default: false
+      },
+
+      /** The label text to go above the input */
+      label: {
+        type: String,
+        required: true
+      },
+
+      /** The value of the input */
+      value: {
+        type: String,
+        default: ''
+      },
+
+      /**
+       * Validation rules for the input. See `vee-validate` package for more
+       * details
+       */
+      validation: {
+        type: [String, Object],
+        default: ''
+      }
     },
 
-    /** The label text to go above the input */
-    label: {
-      type: String,
-      required: true
-    },
+    methods: {
+      onBlur (e) {
+        /** Proxy to the html blur event */
+        this.$emit('blur', e)
+      },
 
-    /** The value of the input */
-    value: {
-      type: String,
-      default: ''
-    },
+      onChange (e) {
+        /** Proxy to the html change event */
+        this.$emit('change', e)
+      },
 
-    /**
-     * Validation rules for the input. See `vee-validate` package for more
-     * details
-     */
-    validation: {
-      type: [String, Object],
-      default: ''
-    }
-  },
+      onFocus (e) {
+        /** Proxy to the html focus event */
+        this.$emit('focus', e)
+      },
 
-  methods: {
-    onBlur (e) {
-      /** Proxy to the html blur event */
-      this.$emit('blur', e)
-    },
+      onInput (e) {
+        /** Proxy to the html input event */
+        this.$emit('input', e)
+      },
 
-    onChange (e) {
-      /** Proxy to the html change event */
-      this.$emit('change', e)
-    },
-
-    onFocus (e) {
-      /** Proxy to the html focus event */
-      this.$emit('focus', e)
-    },
-
-    onInput (e) {
-      /** Proxy to the html input event */
-      this.$emit('input', e)
-    },
-
-    onValue (v) {
-      /** Proxy to the html input event, but only sends the input value */
-      this.$emit('value', v)
+      onValue (v) {
+        /** Proxy to the html input event, but only sends the input value */
+        this.$emit('value', v)
+      }
     }
   }
-}
 </script>
 
 <style module>

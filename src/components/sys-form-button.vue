@@ -18,92 +18,92 @@
 </template>
 
 <script>
-import { filterObjectKeys } from '../utility/vue'
+  import { filterObjectKeys } from '../utility/vue'
 
-export default {
-  name: 'SysFormButton',
+  export default {
+    name: 'SysFormButton',
 
-  model: {
-    prop: 'active',
-    event: 'toggle'
-  },
-
-  props: {
-    /**
-     * If it's in an active state. Same as HTML active attribute.
-     */
-    active: {
-      type: Boolean,
-      default: false
+    model: {
+      prop: 'active',
+      event: 'toggle'
     },
 
-    /**
-     * If it should be a full width block element.
-     */
-    block: {
-      type: Boolean,
-      default: false
-    },
+    props: {
+      /**
+       * If it's in an active state. Same as HTML active attribute.
+       */
+      active: {
+        type: Boolean,
+        default: false
+      },
 
-    /**
-     * The color the button should be.
-     */
-    color: {
-      type: String,
-      default: 'normal',
-      validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
-    },
+      /**
+       * If it should be a full width block element.
+       */
+      block: {
+        type: Boolean,
+        default: false
+      },
 
-    /**
-     * Which direction the content should flow.
-     */
-    direction: {
-      type: String,
-      default: 'horizontal',
-      validator: (v) => ['horizontal', 'vertical'].includes(v)
-    },
+      /**
+       * The color the button should be.
+       */
+      color: {
+        type: String,
+        default: 'normal',
+        validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
+      },
 
-    /**
-     * If it's in a disabled state. Same as HTML disabled attribute.
-     */
-    disabled: {
-      type: Boolean,
-      default: false
-    },
+      /**
+       * Which direction the content should flow.
+       */
+      direction: {
+        type: String,
+        default: 'horizontal',
+        validator: (v) => ['horizontal', 'vertical'].includes(v)
+      },
 
-    /**
-     * The location the button so link to. Same as HTML a link href attribute.
-     */
-    href: {
-      type: String,
-      default: ''
-    },
+      /**
+       * If it's in a disabled state. Same as HTML disabled attribute.
+       */
+      disabled: {
+        type: Boolean,
+        default: false
+      },
 
-    /**
-     * The size of the button.
-     */
-    size: {
-      type: String,
-      default: 'medium',
-      validator: (v) => ['small', 'medium', 'large', 'huge'].includes(v)
-    },
+      /**
+       * The location the button so link to. Same as HTML a link href attribute.
+       */
+      href: {
+        type: String,
+        default: ''
+      },
 
-    /**
-     * An override to what HTML tag it should render as.
-     */
-    tag: {
-      type: String,
-      default: ''
-    }
-  },
+      /**
+       * The size of the button.
+       */
+      size: {
+        type: String,
+        default: 'medium',
+        validator: (v) => ['small', 'medium', 'large', 'huge'].includes(v)
+      },
 
-  computed: {
-    attributes () {
-      if (this.disabled) {
-        return {}
+      /**
+       * An override to what HTML tag it should render as.
+       */
+      tag: {
+        type: String,
+        default: ''
       }
+    },
 
-      switch (this.component) {
+    computed: {
+      attributes () {
+        if (this.disabled) {
+          return {}
+        }
+
+        switch (this.component) {
         case 'nuxt-link':
         case 'router-link':
           return { to: this.href }
@@ -111,84 +111,84 @@ export default {
           return { href: this.href }
         default:
           return {}
-      }
-    },
+        }
+      },
 
-    binds () {
-      return { ...this.$attrs, ...this.attributes }
-    },
+      binds () {
+        return { ...this.$attrs, ...this.attributes }
+      },
 
-    classes () {
-      return filterObjectKeys(this.$style, {
-        button: true,
-        'button--active': this.active,
-        'button--block': this.block,
-        'button--disabled': this.disabled,
-        'button--outline': this.outline,
-        [`button--${this.color}`]: true,
-        [`button--${this.size}`]: true,
-        [`button--${this.direction}`]: true
-      })
-    },
+      classes () {
+        return filterObjectKeys(this.$style, {
+          button: true,
+          'button--active': this.active,
+          'button--block': this.block,
+          'button--disabled': this.disabled,
+          'button--outline': this.outline,
+          [`button--${this.color}`]: true,
+          [`button--${this.size}`]: true,
+          [`button--${this.direction}`]: true
+        })
+      },
 
-    hasHref () {
-      return (this.href !== '')
-    },
+      hasHref () {
+        return (this.href !== '')
+      },
 
-    isExternalHref () {
-      return (this.hasHref && this.href.indexOf('://') !== -1)
-    },
+      isExternalHref () {
+        return (this.hasHref && this.href.indexOf('://') !== -1)
+      },
 
-    isNuxtApp () {
-      return (this.$nuxt != null)
-    },
+      isNuxtApp () {
+        return (this.$nuxt != null)
+      },
 
-    listners () {
-      return {
-        click: this.onClick,
-        ...this.$listeners
-      }
-    },
+      listners () {
+        return {
+          click: this.onClick,
+          ...this.$listeners
+        }
+      },
 
-    component () {
-      if (this.tag !== '') {
-        return this.tag
-      } else if (this.hasHref && !this.disabled) {
-        if (!this.isExternalHref) {
-          if (this.isNuxtApp) {
-            return 'nuxt-link'
+      component () {
+        if (this.tag !== '') {
+          return this.tag
+        } else if (this.hasHref && !this.disabled) {
+          if (!this.isExternalHref) {
+            if (this.isNuxtApp) {
+              return 'nuxt-link'
+            } else {
+              return 'router-link'
+            }
           } else {
-            return 'router-link'
+            return 'a'
           }
         } else {
-          return 'a'
+          return 'button'
         }
-      } else {
-        return 'button'
+      }
+    },
+
+    methods: {
+      onClick (e) {
+        /**
+         * When the button is clicked.
+         *
+         * @event click
+         * @property {Event} MouseEvent Same as the native onclick event
+         */
+        this.$emit('click', e)
+
+        /**
+         * When the button active state switches.
+         *
+         * @event toggle
+         * @property {Boolean} active The opposite of the current active prop
+         */
+        this.$emit('toggle', !this.active)
       }
     }
-  },
-
-  methods: {
-    onClick (e) {
-      /**
-       * When the button is clicked.
-       *
-       * @event click
-       * @property {Event} MouseEvent Same as the native onclick event
-       */
-      this.$emit('click', e)
-
-      /**
-       * When the button active state switches.
-       *
-       * @event toggle
-       * @property {Boolean} active The opposite of the current active prop
-       */
-      this.$emit('toggle', !this.active)
-    }
   }
-}
 </script>
 
 <style module>
