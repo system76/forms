@@ -1,28 +1,38 @@
 import { Meta, Preview, Story } from '@storybook/addon-docs/blocks'
 
+import SysForm from './sys-form'
 import SysFormInput from './sys-form-input'
-import SysFormButton from './sys-form-button'
 
-<Meta title="Examples|Forms" />
+<Meta title="High Level Components|Form" component={SysForm} />
 
-# Form Examples
+# Form
 
-Here are a bunch of example forms that you can use for styling and markup.
+This is a super smart form that handles validation, error checking, and async
+submitting action. It includes a lot of useful built ins, but allows
+customizing with slots and slot props.
 
-### A basic form
+## Props
 
-This is how a basic form with some simple inputs would look.
+<Props of={SysForm} />
+
+### Normal
+
+This is how a basic form would look.
 
 <Preview>
-  <Story height="400px" name="basic-form">
+  <Story height="400px" name="Normal">
     {{
-      components: { SysFormButton, SysFormInput },
       data: () => ({
         email: '',
         password: ''
       }),
+      methods: {
+        submit () {
+          confirm('submit')
+        }
+      },
       template: `
-        <form action="javascript:confirm('submit')">
+        <sys-form :submit-function="submit">
           <sys-form-input
             v-model="email"
             id="email"
@@ -37,12 +47,83 @@ This is how a basic form with some simple inputs would look.
             name="password"
             validation="required|min:6"
           />
-          <div>
-            <sys-form-button color="primary">
-              Login
-            </sys-form-button>
-          </div>
-        </form>
+        </sys-form>
+      `
+    }}
+  </Story>
+</Preview>
+
+### With Custom Submit
+
+This is what you can do to customize the default submit button
+
+<Preview>
+  <Story height="400px" name="CustomSubmit">
+    {{
+      data: () => ({
+        email: '',
+        password: ''
+      }),
+      methods: {
+        submit () {
+          confirm('submit')
+        }
+      },
+      template: `
+        <sys-form
+          submit-color="secondary"
+          submit-text="Login"
+          :submit-function="submit"
+        >
+          <sys-form-input
+            v-model="email"
+            id="email"
+            label="Email Address"
+            name="email"
+            validation="email|required"
+          />
+          <sys-form-input
+            v-model="password"
+            id="password"
+            label="Password"
+            name="password"
+            validation="required|min:6"
+          />
+        </sys-form>
+      `
+    }}
+  </Story>
+</Preview>
+
+### With an error set
+
+If an error occurs during submit or in any of the children components of the
+form, we catch it, and display it.
+
+<Preview>
+  <Story height="400px" name="WithError">
+    {{
+      data: () => ({
+        email: ''
+      }),
+      methods: {
+        submit () {
+          confirm('submit')
+        }
+      },
+      template: `
+        <sys-form
+          invalid="this is some error text"
+          :submit-function="submit"
+        >
+          <sys-form-input
+            v-model="email"
+            id="email"
+            label="Email Address"
+            name="email"
+            validation="email|required"
+          />
+        </sys-form>
       `
     }}
   </Story>
