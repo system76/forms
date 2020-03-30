@@ -14,9 +14,9 @@
 </template>
 
 <script>
-export default {
-  name: 'SysInputError'
-}
+  export default {
+    name: 'SysInputError'
+  }
 </script>
 
 <style module>

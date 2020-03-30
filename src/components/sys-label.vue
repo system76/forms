@@ -13,27 +13,27 @@
 </template>
 
 <script>
-import { filterObjectKeys } from '../utility/vue'
+  import { filterObjectKeys } from '../utility/vue'
 
-export default {
-  name: 'SysLabel',
+  export default {
+    name: 'SysLabel',
 
-  props: {
-    invalid: {
-      type: Boolean,
-      default: false
-    }
-  },
+    props: {
+      invalid: {
+        type: Boolean,
+        default: false
+      }
+    },
 
-  computed: {
-    classes () {
-      return filterObjectKeys(this.$style, {
-        label: true,
-        invalid: this.invalid
-      })
+    computed: {
+      classes () {
+        return filterObjectKeys(this.$style, {
+          label: true,
+          invalid: this.invalid
+        })
+      }
     }
   }
-}
 </script>
 
 <style module>
