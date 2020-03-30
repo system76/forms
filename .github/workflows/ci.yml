@@ -85,7 +85,7 @@ jobs:
         if: failure()
         with:
           name: ${{ matrix.browser }} on ubuntu
-          path: test/screenshots/results
+          path: test/screenshots
 
   Test_Browser_Windows:
     name: Test (${{ matrix.browser }} on windows)
@@ -119,7 +119,7 @@ jobs:
         if: failure()
         with:
           name: ${{ matrix.browser }} on windows
-          path: test/screenshots/results
+          path: test/screenshots
 
   Build:
     runs-on: ubuntu-latest

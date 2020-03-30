@@ -141,6 +141,6 @@
 <style module>
   .formgroup {
     display: block;
-    margin: 1rem 0;
+    margin: 0.6rem 0;
   }
 </style>

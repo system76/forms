@@ -1,0 +1,22 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks'
+
+import SysFormError from './sys-form-error'
+
+<Meta title="Low Level Components|Form Error" component={SysFormError} />
+
+# Form Error
+
+This is a style only component that shows an error message at the top of the
+form.
+
+### Normal
+
+This is how the input component looks without any given props or data.
+
+<Preview>
+  <Story height="100px" name="Normal">
+    {{
+      template: `<sys-form-error>this is an error message</sys-form-error>`
+    }}
+  </Story>
+</Preview>
