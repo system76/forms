@@ -41,114 +41,114 @@
 </template>
 
 <script>
-import { ValidationObserver } from 'vee-validate'
-import Vue from 'vue'
+  import { ValidationObserver } from 'vee-validate'
+  import Vue from 'vue'
 
-import SysFormButton from './sys-form-button.vue'
-import SysFormError from './sys-form-error.vue'
+  import SysFormButton from './sys-form-button.vue'
+  import SysFormError from './sys-form-error.vue'
 
-export default {
-  name: 'SysForm',
+  export default {
+    name: 'SysForm',
 
-  components: {
-    SysFormButton,
-    SysFormError,
-    ValidationObserver
-  },
-
-  inheritAttrs: false,
-
-  props: {
-    /** If the whole form should be disabled */
-    disabled: {
-      type: Boolean,
-      default: false
+    components: {
+      SysFormButton,
+      SysFormError,
+      ValidationObserver
     },
 
-    /**
-     * Invalid text to to display on the form. The form will still be
-     * submittable with this text.
-     */
-    invalid: {
-      type: String,
-      default: ''
-    },
+    inheritAttrs: false,
 
-    /** The color the submit button should be */
-    submitColor: {
-      type: String,
-      default: 'primary',
-      validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
-    },
+    props: {
+      /** If the whole form should be disabled */
+      disabled: {
+        type: Boolean,
+        default: false
+      },
 
-    /**
-     * The function to run when the user submits. This will only occur when
-     * validation passes.
-     */
-    submitFunction: {
-      type: Function,
-      default: () => null
-    },
+      /**
+       * Invalid text to to display on the form. The form will still be
+       * submittable with this text.
+       */
+      invalid: {
+        type: String,
+        default: ''
+      },
 
-    /** The text the submit buton should have */
-    submitText: {
-      type: String,
-      default: 'Submit'
-    }
-  },
+      /** The color the submit button should be */
+      submitColor: {
+        type: String,
+        default: 'primary',
+        validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
+      },
 
-  data: () => ({
-    formError: '',
+      /**
+       * The function to run when the user submits. This will only occur when
+       * validation passes.
+       */
+      submitFunction: {
+        type: Function,
+        default: () => null
+      },
 
-    mounted: false,
-    submitting: false
-  }),
-
-  computed: {
-    error () {
-      return (this.invalid || this.formError)
-    }
-  },
-
-  errorCaptured (err, vm, info) {
-    this.handleError(err, vm, info)
-  },
-
-  methods: {
-    handleError (err, vm, info) {
-      if (vm == null) {
-        vm = this
+      /** The text the submit buton should have */
+      submitText: {
+        type: String,
+        default: 'Submit'
       }
-
-      this.formError = err.message
-      Vue.config.errorHandler(err, vm, info)
     },
 
-    async submit (e) {
-      if (this.disabled) {
-        e.preventDefault()
-        return false
+    data: () => ({
+      formError: '',
+
+      mounted: false,
+      submitting: false
+    }),
+
+    computed: {
+      error () {
+        return (this.invalid || this.formError)
       }
+    },
 
-      this.submitting = true
+    errorCaptured (err, vm, info) {
+      this.handleError(err, vm, info)
+    },
 
-      try {
-        const valid = await this.$refs.observer.validate()
+    methods: {
+      handleError (err, vm, info) {
+        if (vm == null) {
+          vm = this
+        }
 
-        if (!valid) {
+        this.formError = err.message
+        Vue.config.errorHandler(err, vm, info)
+      },
+
+      async submit (e) {
+        if (this.disabled) {
           e.preventDefault()
           return false
-        } else {
-          await this.submitFunction()
         }
-      } catch (err) {
-        this.handleError(err)
-      } finally {
-        this.submitting = false
+
+        this.submitting = true
+
+        try {
+          const valid = await this.$refs.observer.validate()
+
+          if (!valid) {
+            e.preventDefault()
+            return false
+          } else {
+            await this.submitFunction()
+          }
+        } catch (err) {
+          this.handleError(err)
+        } finally {
+          this.submitting = false
+        }
       }
     }
   }
-}
 </script>
 
 <style module>

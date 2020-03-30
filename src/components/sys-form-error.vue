@@ -10,9 +10,9 @@
 </template>
 
 <script>
-export default {
-  name: 'SysFormError'
-}
+  export default {
+    name: 'SysFormError'
+  }
 </script>
 
 <style module>
