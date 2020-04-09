@@ -4,7 +4,6 @@
  */
 
 <script>
-  import { combineRules } from '../utility/validation/utility'
   import SysFormInput from './sys-form-input.vue'
 
   export default {

@@ -25,7 +25,7 @@ function objectRules (value) {
 
   const out = {}
 
-  for (let [rule, args] of parsedString) {
+  for (const [rule, args] of parsedString) {
     if (rule !== '') {
       if (args.length === 1 && args[0] === '') {
         out[rule] = true

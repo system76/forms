@@ -7,7 +7,7 @@
 <template>
   <validation-observer
     ref="observer"
-    v-slot="{ invalid, valid }"
+    v-slot="binds"
     :class="$style.form"
     :disabled="disabled"
     tag="form"
@@ -22,16 +22,16 @@
       </sys-form-error>
     </slot>
 
-    <slot v-bind="{ submitting, invalid, valid }" />
+    <slot v-bind="{ submitting, ...binds }" />
 
     <div :class="$style.actions">
       <slot
         name="actions"
-        v-bind="{ submitting, submittable: (valid && !submitting), invalid, valid }"
+        v-bind="{ submitting, submittable: (binds.valid && !submitting), ...binds }"
       >
         <sys-form-button
           :color="submitColor"
-          :disabled="!valid || submitting"
+          :disabled="!binds.valid || submitting"
         >
           {{ submitText }}
         </sys-form-button>
@@ -99,8 +99,6 @@
 
     data: () => ({
       formError: '',
-
-      mounted: false,
       submitting: false
     }),
 
