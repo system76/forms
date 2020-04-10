@@ -53,14 +53,11 @@ A basic user registration form.
             name="email"
             validation="required"
           />
-          <sys-form-input
+          <sys-form-telephone
             v-model="phoneNumber"
             autocomplete="tel"
             id="phone_number"
-            type="tel"
-            label="Phone Number"
             name="phone_number"
-            placeholder="+1 720 226 9269"
             validation="required"
           />
           <sys-form-password
@@ -76,7 +73,7 @@ A basic user registration form.
             id="password_confirm"
             label="Confirm Password"
             name="new_password_confirm"
-            validation="required|confirm:password"
+            validation="required|confirmed:new_password"
           />
         </sys-form>
       `

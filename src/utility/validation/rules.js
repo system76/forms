@@ -18,6 +18,8 @@ import {
   required as defaultRequired
 } from 'vee-validate/dist/rules'
 
+import { validate as telephoneValidation } from './rules/telephone'
+
 export const between = {
   ...defaultBetween,
   message: 'must be between {min} and {max}'
@@ -66,4 +68,9 @@ export const regex = {
 export const required = {
   ...defaultRequired,
   message: 'can\'t be blank'
+}
+
+export const telephone = {
+  validate: telephoneValidation,
+  message: 'must be a valid telephone number'
 }
