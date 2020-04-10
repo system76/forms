@@ -109,11 +109,11 @@ jobs:
           node-version: 12.x
 
       - name: Install
-        run: runas /user:administrator npm ci
+        run: npm ci
         shell: powershell
 
       - name: Test
-        run: runas /user:administrator npx testcafe ${{ matrix.browser }} test/browser/**
+        run: npx testcafe ${{ matrix.browser }} test/browser/**
         shell: powershell
 
       - name: Upload
