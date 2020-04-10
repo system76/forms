@@ -214,7 +214,7 @@ jobs:
           NODE_ENV: production
 
       - name: Deploy
-        run: npm run release
+        run: npx semantic-release
         env:
           CI: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_KEY }}
