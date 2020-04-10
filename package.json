@@ -21,8 +21,7 @@
     "lint:js:fix": "eslint --fix --ext js,vue --ignore-path .gitignore .",
     "test": "ava",
     "test:browser": "testcafe remote --qr-code ./test/browser/**",
-    "commit": "git-cz",
-    "release": "semantic-release"
+    "commit": "git-cz"
   },
   "homepage": "https://forms.origin76.com/",
   "repository": {
@@ -101,7 +100,6 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-terser": "^5.3.0",
     "rollup-plugin-vue": "^5.1.6",
-    "semantic-release": "^16.0.3",
     "storybook-addon-vue-info": "^1.4.2",
     "testcafe": "^1.8.3",
     "vue": "^2.6.11",
