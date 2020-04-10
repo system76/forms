@@ -352,7 +352,8 @@
   }
 
   .button:not(.button--block) {
-    margin: 0.25rem 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .button--horizontal {

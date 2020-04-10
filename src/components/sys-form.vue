@@ -165,6 +165,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    margin: -0.4rem -0.5rem 0;
+    margin: -0.4rem 0 0;
   }
 </style>
