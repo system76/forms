@@ -110,9 +110,11 @@ jobs:
 
       - name: Install
         run: npm ci
+        shell: powershell
 
       - name: Test
         run: npx testcafe ${{ matrix.browser }} test/browser/**
+        shell: powershell
 
       - name: Upload
         uses: actions/upload-artifact@v1

@@ -1,0 +1,31 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks'
+
+import SysFormTelephone from './sys-form-telephone'
+
+<Meta title="High Level Components|Telephone" component={SysFormTelephone} />
+
+# Email
+
+This is a telephone entry field. It inherits from the high level
+`sys-form-input` component.
+
+## Props
+
+<Props of={SysFormTelephone} />
+
+### Normal
+
+This is how the input looks without any given props or data.
+
+<Preview>
+  <Story height="200px" name="Normal">
+    {{
+      data: () => ({
+        telephone: ''
+      }),
+      template: `
+        <sys-form-telephone v-model="telephone" id="phone_number" />
+      `
+    }}
+  </Story>
+</Preview>

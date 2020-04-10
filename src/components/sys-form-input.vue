@@ -11,7 +11,7 @@
     :class="$style.formgroup"
     :disabled="disabled"
     :name="id"
-    :rules="validation"
+    :rules="rules"
     :immediate="immediate"
     tag="div"
   >
@@ -24,10 +24,12 @@
 
     <sys-input
       :id="id"
-      v-bind="ariaInput"
+      v-bind="{ ...ariaInput, ...$attrs }"
       :disabled="disabled"
-      :required="required"
       :invalid="errors[0]"
+      :placeholder="placeholder"
+      :required="required"
+      :type="inputType"
       :value="value"
       @blur="onBlur"
       @change="onChange"
@@ -93,6 +95,12 @@
         required: true
       },
 
+      /** Placeholder text to put in the input */
+      placeholder: {
+        type: String,
+        default: ''
+      },
+
       /** The value of the input */
       value: {
         type: String,
@@ -106,6 +114,21 @@
       validation: {
         type: [String, Object],
         default: ''
+      }
+    },
+
+    computed: {
+      /** This is used for components that inherit sys-form-input */
+      inputType () {
+        return 'text'
+      },
+
+      /**
+       * Validation rules to be passed to vee-validate. Overwritten by
+       * components that inherit sys-form-input
+       */
+      rules () {
+        return this.validation
       }
     },
 

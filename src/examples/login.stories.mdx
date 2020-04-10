@@ -1,0 +1,45 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks'
+
+<Meta title="Examples|Login" />
+
+# Login
+
+A basic login form. It takes an email and password.
+
+<Preview>
+  <Story name="Normal">
+    {{
+      data: () => ({
+        email: '',
+        password: ''
+      }),
+      methods: {
+        submit () {
+          confirm('submit')
+        }
+      },
+      template: `
+        <sys-form
+          submit-color="secondary"
+          submit-text="Login"
+          :submit-function="submit"
+        >
+          <sys-form-email
+            v-model="email"
+            autocomplete="username"
+            id="email"
+            name="email"
+            validation="required"
+          />
+          <sys-form-password
+            v-model="password"
+            autocomplete="current-password"
+            id="password"
+            name="password"
+            validation="required"
+          />
+        </sys-form>
+      `
+    }}
+  </Story>
+</Preview>

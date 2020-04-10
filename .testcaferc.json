@@ -1,6 +1,6 @@
 {
   "appCommand": "start-storybook --ci --docs --port 7684 --quiet",
-  "appInitDelay": 10000,
+  "appInitDelay": 20000,
   "concurrency": 1,
   "screenshots": {
     "path": "test/screenshots",
