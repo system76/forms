@@ -1,0 +1,45 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/blocks'
+
+<Meta title="Examples|Ticket" />
+
+# Ticket
+
+This is a basic ticket like form submission.
+
+<Preview>
+  <Story name="Normal">
+    {{
+      data: () => ({
+        subject: '',
+        text: ''
+      }),
+      methods: {
+        submit () {
+          confirm('submit')
+        }
+      },
+      template: `
+        <sys-form
+          submit-text="Send"
+          :submit-function="submit"
+        >
+          <sys-form-input
+            v-model="subject"
+            id="subject"
+            name="subject"
+            label="Subject"
+            validation="required|min:10"
+          />
+          <sys-form-markdown
+            v-model="text"
+            id="text"
+            name="text"
+            label="Description of the issue"
+            rows="10"
+            validation="required|min:10"
+          />
+        </sys-form>
+      `
+    }}
+  </Story>
+</Preview>

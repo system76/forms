@@ -1,7 +1,6 @@
 /**
- * src/components/sys-form-input.vue
- * A form input. This includes the label, the input, validation, and
- * error handling.
+ * src/components/sys-form-markdown.vue
+ * A markdown textarea input.
  */
 
 <template>
@@ -15,14 +14,34 @@
     :immediate="immediate"
     tag="div"
   >
-    <sys-label
-      :for="id"
-      :invalid="errors.length > 0"
-    >
-      {{ label }}
-    </sys-label>
+    <div :class="$style.label">
+      <sys-label
+        :for="id"
+        :invalid="errors.length > 0"
+      >
+        {{ label }}
+      </sys-label>
 
-    <sys-input
+      <a
+        :class="{ [$style.markdown]: true, [$style['markdown--error']]: (errors.length > 0) }"
+        href="http://commonmark.org/help/"
+        rel="noopener noreferrer"
+        target="_blank"
+        tabindex="-1"
+        title="Markdown Cheatsheet"
+        aria-label="Markdown Cheatsheet"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 208 128"
+        >
+          <path d="M15 0C6.776 0 0 6.776 0 15v98c0 8.224 6.776 15 15 15h178c8.224 0 15-6.776 15-15V15c0-8.224-6.776-15-15-15H15zm0 10h178c2.856 0 5 2.144 5 5v98c0 2.856-2.144 5-5 5H15c-2.856 0-5-2.144-5-5V15c0-2.856 2.144-5 5-5z" />
+          <path d="M30 98V30h20l20 25 20-25h20v68H90V59L70 84 50 59v39zm125 0l-30-33h20V30h20v35h20z" />
+        </svg>
+      </a>
+    </div>
+
+    <sys-textarea
       :id="id"
       v-bind="{ ...ariaInput, ...$attrs }"
       :class="inputClasses"
@@ -30,7 +49,6 @@
       :invalid="errors[0]"
       :placeholder="placeholder"
       :required="required"
-      :type="inputType"
       :value="value"
       @blur="onBlur"
       @change="onChange"
@@ -49,14 +67,14 @@
   import { ValidationProvider } from 'vee-validate'
 
   import SysInputError from './sys-input-error.vue'
-  import SysInput from './sys-input.vue'
   import SysLabel from './sys-label.vue'
+  import SysTextarea from './sys-textarea.vue'
 
   export default {
-    name: 'SysFormInput',
+    name: 'SysFormMarkdown',
 
     components: {
-      SysInput,
+      SysTextarea,
       SysInputError,
       SysLabel,
       ValidationProvider
@@ -119,19 +137,14 @@
     },
 
     computed: {
-      /** This is used for components that inherit sys-form-input */
+      /** This is used for components that inherit sys-form-textarea */
       inputClasses () {
         return []
       },
 
-      /** This is used for components that inherit sys-form-input */
-      inputType () {
-        return 'text'
-      },
-
       /**
        * Validation rules to be passed to vee-validate. Overwritten by
-       * components that inherit sys-form-input
+       * components that inherit sys-form-textarea
        */
       rules () {
         return this.validation
@@ -171,5 +184,38 @@
   .formgroup {
     display: block;
     margin: 0.6rem 0;
+  }
+
+  .label {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    align-content: flex-end;
+    justify-content: space-between;
+  }
+
+  .label label {
+    flex: 1 1 auto;
+  }
+
+  .markdown {
+    color: var(--color-light-form-input-hint);
+    flex: 0 0 auto;
+    outline: none;
+    padding-left: 1ch;
+  }
+
+  .markdown--error {
+    color: var(--color-light-form-input-invalid);
+  }
+
+  .markdown:hover,
+  .markdown:active,
+  .markdown:focus {
+    color: var(--color-light-form-input-active);
+  }
+
+  .markdown svg {
+    height: 1rem;
   }
 </style>

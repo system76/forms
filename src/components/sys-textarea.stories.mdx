@@ -1,0 +1,66 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks'
+
+import SysTextarea from './sys-textarea'
+
+<Meta title="Low Level Components|Textarea" component={SysTextarea} />
+
+# Textarea
+
+This is a super basic style only component. It has no special functionality
+to the standard html `textarea` tag, except for the style.
+
+## Props
+
+<Props of={SysTextarea} />
+
+### Normal
+
+This is how the input component looks without any given props or data.
+
+<Preview>
+  <Story height="100px" name="Normal">
+    {{
+      components: { SysTextarea },
+      template: `<sys-textarea />`
+    }}
+  </Story>
+</Preview>
+
+### With Placeholder
+
+This is how the input component looks when you give it some placeholder text.
+
+<Preview>
+  <Story height="100px" name="Placeholder">
+    {{
+      components: { SysTextarea },
+      template: `<sys-textarea placeholder="Placeholder Text" />`
+    }}
+  </Story>
+</Preview>
+
+### Disabled
+
+This is how the input will look when it's disabled.
+
+<Preview>
+  <Story height="100px" name="Disabled">
+    {{
+      components: { SysTextarea },
+      template: `<sys-textarea disabled value="text" />`
+    }}
+  </Story>
+</Preview>
+
+### Invalid
+
+This is how the input will look when it is invalid.
+
+<Preview>
+  <Story height="100px" name="Invalid">
+    {{
+      components: { SysTextarea },
+      template: `<sys-textarea invalid="this is an error" />`
+    }}
+  </Story>
+</Preview>
