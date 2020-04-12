@@ -1,11 +1,8 @@
 import { Selector, t } from 'testcafe'
 
-import { assertScreenshot } from '../../utility/browser'
-
 fixture`SysForm CustomSubmit`
   .page`http://localhost:7684/iframe.html?id=examples-register--normal&viewMode=story`
 
-const form = Selector('form')
 const firstName = Selector('input#given_name')
 const lastName = Selector('input#family_name')
 const email = Selector('input#email')
