@@ -19,5 +19,6 @@
   --color-light-form-input-border: var(--color-warm-gray, #574f4a);
   --color-light-form-input-disabled: var(--color-light-gray, #f6f6f6);
   --color-light-form-input-foreground: var(--color-black, #000);
+  --color-light-form-input-hint: var(--color-medium-gray, #a6a6a6);
   --color-light-form-input-invalid: var(--color-red, #f15d22);
 }

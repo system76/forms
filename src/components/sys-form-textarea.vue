@@ -1,6 +1,6 @@
 /**
- * src/components/sys-form-input.vue
- * A form input. This includes the label, the input, validation, and
+ * src/components/sys-form-textarea.vue
+ * A form textarea. This includes the label, the input, validation, and
  * error handling.
  */
 
@@ -22,7 +22,7 @@
       {{ label }}
     </sys-label>
 
-    <sys-input
+    <sys-textarea
       :id="id"
       v-bind="{ ...ariaInput, ...$attrs }"
       :class="inputClasses"
@@ -30,7 +30,6 @@
       :invalid="errors[0]"
       :placeholder="placeholder"
       :required="required"
-      :type="inputType"
       :value="value"
       @blur="onBlur"
       @change="onChange"
@@ -49,14 +48,14 @@
   import { ValidationProvider } from 'vee-validate'
 
   import SysInputError from './sys-input-error.vue'
-  import SysInput from './sys-input.vue'
   import SysLabel from './sys-label.vue'
+  import SysTextarea from './sys-textarea.vue'
 
   export default {
-    name: 'SysFormInput',
+    name: 'SysFormTextarea',
 
     components: {
-      SysInput,
+      SysTextarea,
       SysInputError,
       SysLabel,
       ValidationProvider
@@ -119,19 +118,14 @@
     },
 
     computed: {
-      /** This is used for components that inherit sys-form-input */
+      /** This is used for components that inherit sys-form-textarea */
       inputClasses () {
         return []
       },
 
-      /** This is used for components that inherit sys-form-input */
-      inputType () {
-        return 'text'
-      },
-
       /**
        * Validation rules to be passed to vee-validate. Overwritten by
-       * components that inherit sys-form-input
+       * components that inherit sys-form-textarea
        */
       rules () {
         return this.validation

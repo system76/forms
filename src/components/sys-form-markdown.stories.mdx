@@ -1,0 +1,92 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks'
+
+import SysFormMarkdown from './sys-form-markdown'
+
+<Meta title="High Level Components|Markdown" component={SysFormMarkdown} />
+
+# Markdown
+
+This is a markdown textarea. It does little right now, but might be extended in
+the future to provide more features like markdown preview and keyboard
+shortcuts.
+
+## Props
+
+<Props of={SysFormMarkdown} />
+
+### Normal
+
+This is how the input looks without any given props or data.
+
+<Preview>
+  <Story height="200px" name="Normal">
+    {{
+      data: () => ({
+        markdown: ''
+      }),
+      template: `
+        <sys-form-markdown
+          v-model="markdown"
+          id="markdown"
+          label="Markdown"
+        />
+      `
+    }}
+  </Story>
+</Preview>
+
+### With Placeholder
+
+This is how the input component looks when you give it some placeholder text.
+
+<Preview>
+  <Story height="200px" name="Placeholder">
+    {{
+      template: `
+        <sys-form-markdown
+          id="placeholder"
+          label="Input"
+          placeholder="Placeholder Text"
+        />
+      `
+    }}
+  </Story>
+</Preview>
+
+### Disabled
+
+This is how the input will look when it's disabled.
+
+<Preview>
+  <Story height="200px" name="Disabled">
+    {{
+      template: `
+        <sys-form-markdown
+          disabled
+          id="disabled"
+          label="Input"
+          value="text"
+        />
+      `
+    }}
+  </Story>
+</Preview>
+
+### Invalid
+
+This is how the input will look when it is invalid.
+
+<Preview>
+  <Story height="200px" name="Invalid">
+    {{
+      template: `
+        <sys-form-markdown
+          id="invalid"
+          immediate
+          label="Input"
+          validation="required"
+        />
+      `
+    }}
+  </Story>
+</Preview>
