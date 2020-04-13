@@ -71,6 +71,12 @@
         default: false
       },
 
+      /** If the button should be invisible until interacted with */
+      ghost: {
+        type: Boolean,
+        default: false
+      },
+
       /**
        * The location the button so link to. Same as HTML a link href attribute.
        */
@@ -124,6 +130,7 @@
           'button--active': this.active,
           'button--block': this.block,
           'button--disabled': this.disabled,
+          'button--ghost': this.ghost,
           'button--outline': this.outline,
           [`button--${this.color}`]: true,
           [`button--${this.size}`]: true,
@@ -294,6 +301,20 @@
   .button--secondary:disabled {
     background-color: var(--color-light-form-button-secondary);
     border-color: var(--color-light-form-button-secondary);
+  }
+
+  .button--ghost:not(
+    :hover,
+    :focus,
+    :focus-within,
+    .button--active,
+    :active,
+    .button--disabled,
+    :disabled
+  ) {
+    background-color: transparent;
+    border-color: transparent;
+    color: inherit;
   }
 
   /**
