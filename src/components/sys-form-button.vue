@@ -303,15 +303,7 @@
     border-color: var(--color-light-form-button-secondary);
   }
 
-  .button--ghost:not(
-    :hover,
-    :focus,
-    :focus-within,
-    .button--active,
-    :active,
-    .button--disabled,
-    :disabled
-  ) {
+  .button--ghost:not(:hover):not(:focus):not(:focus-within):not(.button--active):not(:active):not(.button--disabled):not(:disabled) {
     background-color: transparent;
     border-color: transparent;
     color: inherit;
