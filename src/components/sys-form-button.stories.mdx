@@ -35,6 +35,27 @@ but changes the appearance.
   </Story>
 </Preview>
 
+### Ghost
+
+Sometimes we want the button to look like normal text until a user interacts
+with it. If you set `:ghost="true"` on the button, it will show like normal text
+until a user hovers, focuses, or interacts with it.
+
+<Preview>
+  <Story name="Ghost">
+    {{
+      components: { SysFormButton },
+      template: `
+        <div>
+          <sys-form-button color="normal" :ghost="true">normal</sys-form-button>
+          <sys-form-button color="primary" :ghost="true">primary</sys-form-button>
+          <sys-form-button color="secondary" :ghost="true">secondary</sys-form-button>
+        </div>
+      `
+    }}
+  </Story>
+</Preview>
+
 ### Sizes
 
 There are four different sizes. Each one has it's own break points, so please
