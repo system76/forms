@@ -114,12 +114,12 @@
 
     methods: {
       handleError (err, vm, info) {
-        if (vm == null) {
-          vm = this
-        }
-
+        console.error(err)
         this.formError = err.message
-        Vue.config.errorHandler(err, vm, info)
+
+        if (Vue.config != null && Vue.config.errorHandler != null) {
+          Vue.config.errorHandler(err, vm || this, info)
+        }
       },
 
       async submit (e) {

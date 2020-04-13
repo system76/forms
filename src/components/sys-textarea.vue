@@ -48,8 +48,6 @@
 
     computed: {
       classes () {
-        window.c = this
-
         return filterObjectKeys(this.$style, {
           input: true,
           invalid: this.invalid
