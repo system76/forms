@@ -41,6 +41,7 @@
     display: block;
     font-family: var(--font-family-sans);
     font-size: 1rem;
+    text-align: left;
     user-select: none;
   }
 

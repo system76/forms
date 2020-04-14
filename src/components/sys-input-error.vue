@@ -31,6 +31,7 @@
     height: 1rem;
     justify-content: flex-start;
     margin-top: 0.3rem;
+    text-align: left;
     user-select: none;
   }
 </style>
