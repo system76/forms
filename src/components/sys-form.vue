@@ -94,6 +94,16 @@
       submitText: {
         type: String,
         default: 'Submit'
+      },
+
+      /**
+       * If we should pass any error that occured in the form to Vue. This will
+       * usually get to your third party error library, but may also change the
+       * page to a 500 error page.
+       */
+      swallowError: {
+        type: Boolean,
+        default: true
       }
     },
 
@@ -117,7 +127,7 @@
         console.error(err)
         this.formError = err.message
 
-        if (Vue.config != null && Vue.config.errorHandler != null) {
+        if (!this.swallowError && Vue.config != null && Vue.config.errorHandler != null) {
           Vue.config.errorHandler(err, vm || this, info)
         }
       },
