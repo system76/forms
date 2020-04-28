@@ -5,31 +5,16 @@
  */
 
 <template>
-  <validation-provider
-    ref="provider"
-    v-slot="{ errors, required, ariaInput, ariaMsg }"
-    :class="$style.formgroup"
-    :disabled="disabled"
-    :name="id"
-    :rules="rules"
-    :immediate="immediate"
-    tag="div"
-  >
-    <sys-label
-      :for="id"
-      :invalid="errors.length > 0"
-    >
+  <div :class="$style.formgroup">
+    <sys-label :for="id">
       {{ label }}
     </sys-label>
 
     <sys-select
       :id="id"
-      v-bind="{ ...ariaInput, ...$attrs }"
+      v-bind="{ ...$attrs }"
       :class="inputClasses"
       :disabled="disabled"
-      :invalid="errors[0]"
-      :placeholder="placeholder"
-      :required="required"
       @blur="onBlur"
       @change="onChange"
       @focus="onFocus"
@@ -38,17 +23,10 @@
     >
       <slot />
     </sys-select>
-
-    <sys-input-error v-bind="ariaMsg">
-      {{ errors[0] }}
-    </sys-input-error>
-  </validation-provider>
+  </div>
 </template>
 
 <script>
-  import { ValidationProvider } from 'vee-validate'
-
-  import SysInputError from './sys-input-error.vue'
   import SysLabel from './sys-label.vue'
   import SysSelect from './sys-select.vue'
 
@@ -57,9 +35,7 @@
 
     components: {
       SysSelect,
-      SysInputError,
       SysLabel,
-      ValidationProvider
     },
 
     inheritAttrs: false,
@@ -84,31 +60,10 @@
         required: true
       },
 
-      /** If the input should be validated immediatly on render */
-      immediate: {
-        type: Boolean,
-        default: false
-      },
-
       /** The label text to go above the input */
       label: {
         type: String,
         required: true
-      },
-
-      /** Placeholder text to put in the input */
-      placeholder: {
-        type: String,
-        default: ''
-      },
-
-      /**
-       * Validation rules for the input. See `vee-validate` package for more
-       * details
-       */
-      validation: {
-        type: [String, Object],
-        default: ''
       }
     },
 
@@ -116,14 +71,6 @@
       /** This is used for components that inherit sys-form-input */
       inputClasses () {
         return []
-      },
-
-      /**
-       * Validation rules to be passed to vee-validate. Overwritten by
-       * components that inherit sys-form-input
-       */
-      rules () {
-        return this.validation
       }
     },
 
