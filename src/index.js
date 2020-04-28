@@ -22,3 +22,5 @@ export function install (Vue) {
 
 export * from './components'
 export * from './utility/validation/rules'
+
+export { validate } from 'vee-validate'
