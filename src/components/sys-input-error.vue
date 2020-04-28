@@ -28,9 +28,9 @@
     display: flex;
     font-family: var(--font-family-sans);
     font-size: 0.9rem;
-    height: 1rem;
     justify-content: flex-start;
     margin-top: 0.3rem;
+    min-height: 1rem;
     text-align: left;
     user-select: none;
   }
