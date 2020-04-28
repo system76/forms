@@ -1,0 +1,50 @@
+import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks'
+
+import SysFormSelect from './sys-form-select'
+
+<Meta title="High Level Components|Select" component={SysFormSelect} />
+
+# Select
+
+This is a form styled select box. it includes validation, error handling, and
+everything you would expect from a high level component.
+
+## Props
+
+<Props of={SysFormSelect} />
+
+### Normal
+
+This is how the select component looks without any given props or data.
+
+<Preview>
+  <Story height="200px" name="Normal">
+    {{
+      template: `
+        <sys-form-select id="normal" label="Select">
+          <option value="William Adama">William Adama</option>
+          <option value="Laura Roslin">Laura Roslin</option>
+          <option value="Kara Thrace">Kara Thrace</option>
+        </sys-form-select>
+      `
+    }}
+  </Story>
+</Preview>
+
+### Disabled
+
+This is how the input will look when it's disabled.
+
+<Preview>
+  <Story height="200px" name="Disabled">
+    {{
+      template: `
+        <sys-form-select id="disabled" label="Select" disabled>
+          <option value="William Adama">William Adama</option>
+          <option value="Laura Roslin" selected>Laura Roslin</option>
+          <option value="Kara Thrace">Kara Thrace</option>
+        </sys-form-select>
+      `
+    }}
+  </Story>
+</Preview>
