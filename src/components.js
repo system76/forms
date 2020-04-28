@@ -3,6 +3,8 @@
  * Exports a bunch of helpful System76 form related components
  */
 
+export { ValidationObserver } from 'vee-validate'
+
 export { default as SysForm } from './components/sys-form.vue'
 export { default as SysFormButton } from './components/sys-form-button.vue'
 export { default as SysFormEmail } from './components/sys-form-email.vue'
