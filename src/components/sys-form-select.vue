@@ -35,7 +35,7 @@
 
     components: {
       SysSelect,
-      SysLabel,
+      SysLabel
     },
 
     inheritAttrs: false,
