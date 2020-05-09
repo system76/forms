@@ -11,7 +11,7 @@ import vue from 'rollup-plugin-vue'
 
 const DEFAULT_CONFIG = {
   input: 'src/entry.js',
-  external: ['vue'],
+  external: ['@system76/markdown', 'vue'],
   plugins: {
     preVue: [
       resolve(),
