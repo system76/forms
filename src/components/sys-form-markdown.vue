@@ -181,11 +181,6 @@
 </script>
 
 <style module>
-  .formgroup {
-    display: block;
-    margin: 0.6rem 0;
-  }
-
   .label {
     display: flex;
     flex-wrap: nowrap;

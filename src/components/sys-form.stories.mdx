@@ -18,6 +18,23 @@ please take a look at the example storybooks.
 
 <Props of={SysForm} />
 
+## Styling
+
+By default, the form element is `display: grid`. This allows you to build some
+fancy multi line forms while avoiding a bunch of the messy margin properties.
+
+For this to work, if you are putting inputs next to each other, you need to
+explicit set the grid columns like so:
+
+```css
+form {
+  grid-template-columns: repeat(3, 1fr);
+}
+```
+
+If you do not do this, the bottom action buttons will not span to the end and
+look off.
+
 ### Normal
 
 This is how a basic form would look.

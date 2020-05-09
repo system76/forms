@@ -5,7 +5,7 @@
  */
 
 <template>
-  <div :class="$style.formgroup">
+  <div>
     <sys-label :for="id">
       {{ label }}
     </sys-label>
@@ -102,10 +102,3 @@
     }
   }
 </script>
-
-<style module>
-  .formgroup {
-    display: block;
-    margin: 0.6rem 0;
-  }
-</style>

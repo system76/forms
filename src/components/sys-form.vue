@@ -161,7 +161,12 @@
 
 <style module>
   .form {
-    display: block;
+    align-content: stretch;
+    align-items: stretch;
+    display: grid;
+    grid-gap: 0.4rem 1rem;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
     margin: 0;
     min-width: calc(320px - 2rem);
     padding: 0;
@@ -172,7 +177,8 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+    grid-column: 1 / -1;
     justify-content: flex-end;
-    margin: -0.4rem 0 0;
+    margin: -0.5rem 0;
   }
 </style>

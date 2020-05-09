@@ -22,6 +22,7 @@
     border: 1px solid var(--color-light-form-input-border);
     color: var(--color-light-form-input-background);
     display: block;
+    grid-column: 1 / -1;
     padding: 0.5rem;
   }
 </style>
