@@ -23,10 +23,13 @@
     >
       <slot />
     </sys-select>
+
+    <sys-input-error />
   </div>
 </template>
 
 <script>
+  import SysInputError from './sys-input-error.vue'
   import SysLabel from './sys-label.vue'
   import SysSelect from './sys-select.vue'
 
@@ -34,6 +37,7 @@
     name: 'SysFormSelect',
 
     components: {
+      SysInputError,
       SysSelect,
       SysLabel
     },

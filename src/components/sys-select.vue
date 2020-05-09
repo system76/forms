@@ -17,10 +17,10 @@
     <slot>
       <option
         v-for="([k, v]) in options"
-        :selected="(k === value)"
         :key="k"
-        :value="k"
         v-markdown="v"
+        :selected="(k === value)"
+        :value="k"
       />
     </slot>
   </select>
@@ -32,12 +32,12 @@
   export default {
     name: 'SysSelect',
 
-    model: {
-      event: 'value'
-    },
-
     directives: {
       markdown: markdownDirective
+    },
+
+    model: {
+      event: 'value'
     },
 
     props: {
