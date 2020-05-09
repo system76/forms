@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@system76/design": "^4.0.0 || ^5.0.0",
+    "@system76/markdown": "^1.0.0",
     "vee-validate": "^3.2.5"
   },
   "devDependencies": {

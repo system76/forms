@@ -8,16 +8,37 @@
     v-bind="$attrs"
     :disabled="disabled"
     :class="$style.input"
-    v-on="$listeners"
+    @blur="onBlur"
+    @change="onChange"
+    @focus="onFocus"
+    @input="onInput"
   >
     <!-- @slot The Inner HTML for `option` tags -->
-    <slot />
+    <slot>
+      <option
+        v-for="([k, v]) in options"
+        :selected="(k === value)"
+        :key="k"
+        :value="k"
+        v-markdown="v"
+      />
+    </slot>
   </select>
 </template>
 
 <script>
+  import { directive as markdownDirective } from '@system76/markdown'
+
   export default {
     name: 'SysSelect',
+
+    model: {
+      event: 'value'
+    },
+
+    directives: {
+      markdown: markdownDirective
+    },
 
     props: {
       /** If this input is disabled and should not take input */
@@ -27,12 +48,27 @@
       },
 
       /**
-       * If this input is invalid and requires changes. You can give an error
-       * string to set the html invalid text.
-       */
+        * Options to pass to the select. You can override this by using the
+        * `default` slot to pass custom HTML code
+        */
+      options: {
+        type: Array,
+        default: () => []
+      },
+
+      /** Invalid text to set the input to */
       invalid: {
-        type: [Boolean, String],
-        default: false
+        type: String,
+        default: ''
+      },
+
+      /**
+       * The selected option. This only works if you specify the `options` as
+       * well
+       */
+      value: {
+        type: String,
+        default: ''
       }
     },
 
@@ -43,13 +79,7 @@
         },
 
         set (value) {
-          if (typeof value === 'string') {
-            this.$el.setCustomValidity(value)
-          } else if (value === true) {
-            this.$el.setCustomValidity('invalid')
-          } else {
-            this.$el.setCustomValidity('')
-          }
+          this.$el.setCustomValidity(value)
         }
       }
     },
@@ -62,6 +92,30 @@
 
     mounted () {
       this.validity = this.invalid
+    },
+
+    methods: {
+      onBlur (e) {
+        /** Proxy to the html blur event */
+        this.$emit('blur', e)
+      },
+
+      onChange (e) {
+        /** Proxy to the html change event */
+        this.$emit('change', e)
+      },
+
+      onFocus (e) {
+        /** Proxy to the html focus event */
+        this.$emit('focus', e)
+      },
+
+      onInput (e) {
+        /** Proxy to the html input event */
+        this.$emit('input', e)
+        /** Proxy to the html input event, but only sends the input value */
+        this.$emit('value', e.target.value)
+      }
     }
   }
 </script>
