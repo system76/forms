@@ -32,6 +32,32 @@ This is how the select component looks without any given props or data.
   </Story>
 </Preview>
 
+### With Options
+
+Instead of using html to template your options, you can specify them with the
+`options` and `value` prop.
+
+<Preview>
+  <Story height="100px" name="Options">
+    {{
+      data: () => ({
+        options: [
+          ['CA', 'Canada'],
+          ['MX', 'Mexico'],
+          ['US', 'United States']
+        ],
+        value: 'US'
+      }),
+      template: `
+        <sys-select
+          v-model="value"
+          :options="options"
+        />
+      `
+    }}
+  </Story>
+</Preview>
+
 ### Disabled
 
 This is how the input will look when it's disabled.

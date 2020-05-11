@@ -48,3 +48,31 @@ This is how the input will look when it's disabled.
     }}
   </Story>
 </Preview>
+
+### With Options
+
+Instead of using html to template your options, you can specify them with the
+`options` and `value` prop.
+
+<Preview>
+  <Story height="200px" name="Options">
+    {{
+      data: () => ({
+        options: [
+          ['CA', 'Canada'],
+          ['MX', 'Mexico'],
+          ['US', 'United States']
+        ],
+        value: 'US'
+      }),
+      template: `
+        <sys-form-select
+          v-model="value"
+          id="options"
+          label="Options"
+          :options="options"
+        />
+      `
+    }}
+  </Story>
+</Preview>
