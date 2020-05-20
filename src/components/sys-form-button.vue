@@ -231,6 +231,7 @@
     border-color: var(--color-light-form-button-normal);
     color: var(--color-light-form-button-normal-contrast);
     font-family: var(--font-family-sans);
+    letter-spacing: 0px;
   }
 
   .button--normal:hover,
