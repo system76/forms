@@ -8,7 +8,6 @@
   <validation-provider
     ref="provider"
     v-slot="{ errors, required, ariaInput, ariaMsg }"
-    :class="$style.formgroup"
     :disabled="disabled"
     :name="id"
     :rules="rules"
@@ -160,10 +159,3 @@
     }
   }
 </script>
-
-<style module>
-  .formgroup {
-    display: block;
-    margin: 0.6rem 0;
-  }
-</style>
