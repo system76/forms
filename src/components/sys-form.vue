@@ -26,7 +26,7 @@
 
     <slot v-bind="{ submitting, ...binds }" />
 
-    <div :class="$style.actions">
+    <div :class="actionsClasses">
       <slot
         name="actions"
         v-bind="{ submitting, submittable: (binds.valid && !submitting), ...binds }"
@@ -83,6 +83,13 @@
         validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
       },
 
+      /** The alignment of the form buttons */
+      submitAlign: {
+        type: String,
+        default: 'right',
+        validator: (v) => ['left', 'right'].includes(v)
+      },
+
       /**
        * The function to run when the user submits. This will only occur when
        * validation passes.
@@ -115,6 +122,14 @@
     }),
 
     computed: {
+      actionsClasses () {
+        return {
+          [this.$style.actions]: true,
+          [this.$style.left]: (this.submitAlign === 'left'),
+          [this.$style.right]: (this.submitAlign === 'right')
+        }
+      },
+
       error () {
         if (typeof this.invalid === 'string') {
           return new Error(this.invalid)
@@ -180,7 +195,14 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
     margin: -0.4rem 0 0;
+  }
+
+  .left {
+    justify-content: flex-start;
+  }
+
+  .right {
+    justify-content: flex-end;
   }
 </style>
