@@ -13,14 +13,16 @@
     tag="form"
     @submit.prevent="submit"
   >
-    <slot
-      name="error"
-      v-bind="{ error }"
-    >
-      <sys-form-error v-if="error">
-        {{ error }}
-      </sys-form-error>
-    </slot>
+    <template v-if="error">
+      <slot
+        name="error"
+        v-bind="{ error }"
+      >
+        <sys-form-error>
+          {{ error.message }}
+        </sys-form-error>
+      </slot>
+    </template>
 
     <slot v-bind="{ submitting, ...binds }" />
 
@@ -70,8 +72,8 @@
        * submittable with this text.
        */
       invalid: {
-        type: String,
-        default: ''
+        type: [String, Object],
+        default: null
       },
 
       /** The color the submit button should be */
@@ -108,13 +110,19 @@
     },
 
     data: () => ({
-      formError: '',
+      formError: null,
       submitting: false
     }),
 
     computed: {
       error () {
-        return (this.invalid || this.formError)
+        if (typeof this.invalid === 'string') {
+          return new Error(this.invalid)
+        } else if (this.invalid != null) {
+          return this.invalid
+        } else {
+          return this.formError
+        }
       }
     },
 
@@ -125,7 +133,7 @@
     methods: {
       handleError (err, vm, info) {
         console.error(err)
-        this.formError = err.message
+        this.formError = err
 
         if (!this.swallowError && Vue.config != null && Vue.config.errorHandler != null) {
           Vue.config.errorHandler(err, vm || this, info)
