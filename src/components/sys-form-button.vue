@@ -81,7 +81,7 @@
        * The location the button so link to. Same as HTML a link href attribute.
        */
       href: {
-        type: String,
+        type: [String, Object],
         default: ''
       },
 
@@ -143,7 +143,7 @@
       },
 
       isExternalHref () {
-        return (this.hasHref && this.href.indexOf('://') !== -1)
+        return (this.hasHref && typeof this.href === 'string' && this.href.indexOf('://') !== -1)
       },
 
       isNuxtApp () {
