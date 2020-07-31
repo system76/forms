@@ -20,3 +20,17 @@ This is how the input component looks without any given props or data.
     }}
   </Story>
 </Preview>
+
+### With a link
+
+Sometimes we add a link to fix the error. This is what that would look like.
+
+<Preview>
+  <Story height="100px" name="Link">
+    {{
+      template: `<sys-form-error>
+        an error occured. <a href="#">fix it</a>.
+      </sys-form-error>`
+    }}
+  </Story>
+</Preview>

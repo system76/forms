@@ -22,6 +22,12 @@
     border: 1px solid var(--color-light-form-input-border);
     color: var(--color-light-form-input-background);
     display: block;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+  }
+
+  .error a {
+    color: inherit;
+    text-decoration: underline;
   }
 </style>
