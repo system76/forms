@@ -51,7 +51,7 @@
       color: {
         type: String,
         default: 'normal',
-        validator: (v) => ['normal', 'primary', 'secondary'].includes(v)
+        validator: (v) => ['normal', 'primary', 'secondary', 'danger'].includes(v)
       },
 
       /**
@@ -302,6 +302,32 @@
   .button--secondary:disabled {
     background-color: var(--color-light-form-button-secondary);
     border-color: var(--color-light-form-button-secondary);
+  }
+
+  .button--danger {
+    background-color: var(--color-light-form-button-danger);
+    border-color: var(--color-light-form-button-danger);
+    color: var(--color-light-form-button-danger-contrast);
+    font-family: var(--font-family-slab);
+    text-transform: uppercase;
+  }
+
+  .button--danger:hover,
+  .button--danger:focus-within {
+    box-shadow: 1px 1px 3px var(--color-light-form-button-danger-shadow);
+  }
+
+  .button--danger.button--active,
+  .button--danger:active {
+    background-color: var(--color-light-form-button-danger-light);
+    border-color: var(--color-light-form-button-danger-light);
+    box-shadow: 1px 1px 3px var(--color-light-form-button-danger-shadow);
+  }
+
+  .button--danger.button--disabled,
+  .button--danger:disabled {
+    background-color: var(--color-light-form-button-danger);
+    border-color: var(--color-light-form-button-danger);
   }
 
   .button--ghost:not(:hover):not(:focus):not(:focus-within):not(.button--active):not(:active):not(.button--disabled):not(:disabled) {
