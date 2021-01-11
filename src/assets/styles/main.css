@@ -14,6 +14,11 @@
   --color-light-form-button-secondary-shadow: #53888f;
   --color-light-form-button-secondary-contrast: var(--color-black, #000);
 
+  --color-light-form-button-danger: #f15d22;
+  --color-light-form-button-danger-light: #f57442;
+  --color-light-form-button-danger-shadow: #9d877e;
+  --color-light-form-button-danger-contrast: var(--color-white, #fff);
+
   --color-light-form-input-active: var(--color-orange, #faa41a);
   --color-light-form-input-background: var(--color-white, #fff);
   --color-light-form-input-border: var(--color-warm-gray, #574f4a);
