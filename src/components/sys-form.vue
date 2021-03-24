@@ -33,7 +33,7 @@
       >
         <sys-form-button
           :color="submitColor"
-          :disabled="!binds.valid || submitting"
+          :disabled="!binds.valid || submitting || disabled"
         >
           {{ submitText }}
         </sys-form-button>
